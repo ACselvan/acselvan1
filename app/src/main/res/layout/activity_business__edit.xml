@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fbf7ea"
+    tools:context=".Business_Edit">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Category"
+                android:textAllCaps="false"
+                android:textSize="25sp" />
+
+            <Spinner
+                android:id="@+id/spinner_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Firm name"
+                android:textAllCaps="false"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/firmname_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Address"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/address_edit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:inputType="textMultiLine"
+                android:text="Address" />
+            <Spinner
+                android:id="@+id/spinner_businessedit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/mobile_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact number"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/r3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Proprietor name"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/proprietorname_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="Proprietor name" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/r5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="description"
+                android:textSize="25sp" />
+
+
+            <EditText
+                android:id="@+id/description_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:inputType="textMultiLine"
+                android:text="description" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/submit_edit"
+                android:layout_width="220dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:text="upload"
+                android:background="@drawable/button"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

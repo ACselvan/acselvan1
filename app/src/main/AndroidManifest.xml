@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.e.myapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Job_existing"></activity>
+        <activity android:name=".Matrimony_View_Details" />
+        <activity android:name=".Matrimony_Image_Edit" />
+        <activity android:name=".Business_Image_Edit" />
+        <activity android:name=".Matrimony_Edit" />
+        <activity android:name=".Business_Edit" />
+        <activity android:name=".Business_Favourites" />
+        <activity android:name=".Matrimony_Favourite" />
+        <activity android:name=".JobList" />
+        <activity android:name=".Matrimony_info" />
+        <activity android:name=".Business_info" />
+        <activity android:name=".BusinessPortal" />
+        <activity android:name=".Work_Portal" />
+        <activity android:name=".logIn" />
+        <activity android:name=".signup" />
+        <activity android:name=".main" />
+        <activity android:name=".ResetPasswordActivity" />
+        <activity android:name=".signup2" />
+        <activity android:name=".viewhoroscope" />
+        <activity android:name=".horoscopedisplay" />
+        <activity android:name=".horoscope" />
+        <activity android:name=".Matrimonydisplay" />
+        <activity android:name=".studentdetails" />
+        <activity android:name=".Employportal" />
+        <activity android:name=".registration" />
+        <activity android:name=".Category" />
+        <activity android:name=".NR" />
+        <activity android:name=".Getting_Business_details" />
+        <activity android:name=".Business_catalogue" />
+        <activity android:name=".Job_Portal" />
+        <activity android:name=".Matrimony" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "48003190773",
+    "firebase_url": "https://saivities.firebaseio.com",
+    "project_id": "saivities",
+    "storage_bucket": "saivities.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48003190773:android:a268aaffa393306d595abc",
+        "android_client_info": {
+          "package_name": "com.e.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48003190773-hef8adjnsca9rref80p4cim3535uj1v1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.e.myapplication",
+            "certificate_hash": "481681c1e8f6034b2c243438ff3a4bd2905c3183"
+          }
+        },
+        {
+          "client_id": "48003190773-9slb1e26u3lk3ntua3mf0o9bvaenj6es.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIntIB2ykjghggdgZoEMULbhLEyFMLdJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48003190773-9slb1e26u3lk3ntua3mf0o9bvaenj6es.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

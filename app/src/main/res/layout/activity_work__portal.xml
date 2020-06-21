@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+
+    android:layout_height="match_parent"
+    android:background="#fbf7ea"
+
+    tools:context=".Work_Portal">
+
+<ImageView
+
+    android:id="@+id/work_hire"
+    android:elevation="2dp"
+    android:layout_gravity="center"
+    android:layout_width="400dp"
+    android:layout_height="300dp"
+    android:src="@drawable/hire"
+   />
+    <ImageView
+
+        android:id="@+id/work_employee"
+        android:elevation="2dp"
+        android:layout_gravity="center"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:src="@drawable/employee"
+        android:layout_marginBottom="100dp"
+       />
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_marginTop="-140dp"
+            android:id="@+id/view_pager_job"
+            android:layout_width="match_parent"
+            android:layout_height="165dp" />
+    <com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/indicator_job"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="bottom"
+        android:padding="10dip"
+        app:centered="true"
+        app:fillColor="#ff8000"
+        app:pageColor="#fbf7ea"
+        app:snap="false" />
+
+</LinearLayout>

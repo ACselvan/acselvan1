@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Business_catalogue"
+    android:background="#fbf7ea">
+    <Button
+        android:id="@+id/addbusiness"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Add My Business"
+        android:background="@drawable/button"
+         />
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        android:clickable="true"
+        >
+
+
+    </ListView>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/e1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+         />
+
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Button"
+        android:background="@drawable/button"
+        />
+</LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+
+        android:id="@+id/view_pager_business"
+        android:layout_width="match_parent"
+        android:layout_height="165dp" />
+
+<com.viewpagerindicator.CirclePageIndicator
+android:id="@+id/indicator_business"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:layout_alignParentBottom="true"
+android:layout_centerHorizontal="true"
+android:gravity="bottom"
+android:padding="10dip"
+app:centered="true"
+app:fillColor="#ff8000"
+app:pageColor="#fbf7ea"
+app:snap="false" />
+</LinearLayout>

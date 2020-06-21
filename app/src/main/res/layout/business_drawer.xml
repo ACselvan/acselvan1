@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fbf7ea"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/profileimage_drawer_business"/>
+    <TextView
+        android:id="@+id/drawer_firmname_business"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:id="@+id/drawer_proprietorname_business"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+
+        android:textSize="20dp"
+        />
+    <TextView
+        android:id="@+id/drawer_contactnumber_business"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+
+        android:text="name"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:id="@+id/drawer_category_business"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:id="@+id/drawer_addresss_business"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+
+        android:text="name"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:id="@+id/drawer_city_business"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+
+        android:textSize="20dp"
+        />
+    <TextView
+        android:id="@+id/drawer_description_business"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+
+        android:textSize="20dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/business_image_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/button"
+            android:text="edit image" />
+
+        <Button
+            android:id="@+id/edit_business"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/button"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="edit" />
+
+        <Button
+            android:id="@+id/business_favourites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/button"
+            android:text="favourites" />
+    </LinearLayout>
+
+</LinearLayout>
