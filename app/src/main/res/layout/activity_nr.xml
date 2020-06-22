@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Age" />
+/>
         </LinearLayout>
 
 
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
 
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
 
 
         </LinearLayout>
@@ -173,7 +173,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-
+                android:inputType="number"
                 android:ems="10" />
 
 
@@ -291,7 +291,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="number"
+                android:maxLength="2" />
 
         </LinearLayout>
 
@@ -299,7 +300,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <TextView
 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="city" />
             <Spinner
                 android:id="@+id/spinner_matrimony"
                 android:layout_width="match_parent"
@@ -314,15 +320,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/uploadHoroscope"
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:text="upload horoscope"
-                android:background="@drawable/button"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                />
+
 
             <ProgressBar
                 android:id="@+id/pb"
@@ -337,7 +335,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:srcCompat="@tools:sample/avatars" />
-
+            <Button
+                android:id="@+id/uploadHoroscope"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:text="get horoscope"
+                android:background="@drawable/button"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                />
         </LinearLayout>
 
 
@@ -346,14 +352,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/uploadimage"
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:text="upload image"
-                android:background="@drawable/button"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"/>
+
 
             <ProgressBar
                 android:id="@+id/pb1"
@@ -368,6 +367,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:srcCompat="@tools:sample/avatars" />
+            <Button
+                android:id="@+id/uploadimage"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:text="get profile image"
+                android:background="@drawable/button"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
 
@@ -386,7 +393,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button"
-                android:text="PROCEED TO PAYMENT" />
+                android:text="submit" />
 
 
         </LinearLayout>

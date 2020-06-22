@@ -5,9 +5,9 @@
     android:background="#fbf7ea"
     >
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_gravity="center"
         android:id="@+id/profileimage_drawer_business"/>
     <TextView
         android:id="@+id/drawer_firmname_business"

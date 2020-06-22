@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Age" />
+                 />
         </LinearLayout>
 
 
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
 
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
 
 
         </LinearLayout>
@@ -174,7 +174,7 @@
                 android:id="@+id/Income_matrimony_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:inputType="number"
 
                 android:ems="10" />
 
@@ -293,7 +293,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:maxLength="2"
+                android:inputType="number" />
 
         </LinearLayout>
 

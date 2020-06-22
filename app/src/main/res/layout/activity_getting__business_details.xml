@@ -56,8 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:inputType="textPersonName"/>
+
 
     </LinearLayout>
 
@@ -84,12 +84,12 @@
             android:layout_height="50dp"
 
             android:inputType="textMultiLine"
-            android:text="Address" />
+             />
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter the city"
+            android:text="Select city"
             android:textColor="#000000"
 
             android:textSize="25sp" />
@@ -123,7 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Proprietor name" />
+            />
 
 
     </LinearLayout>
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
 
             android:inputType="textMultiLine"
-            android:text="description" />
+             />
 
          </LinearLayout>
     <LinearLayout
