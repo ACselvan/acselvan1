@@ -76,7 +76,7 @@ Button signout,date,next;
         matrimony_image = findViewById(R.id.marriage_image);
         Business_image = findViewById(R.id.busiess_catelogue_image);
         job_image = findViewById(R.id.job_image);
-        next = findViewById(R.id.next);
+
         slideLists = new ArrayList<>();
         sharedPreferences = getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         a1 = sharedPreferences.getString("phonenumber", "");
@@ -114,13 +114,7 @@ Button signout,date,next;
 
             }
         });
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i1=new Intent(Main2Activity.this,Matrimony_info_demo.class);
-                startActivity(i1);
-            }
-        });
+
         matrimony_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
