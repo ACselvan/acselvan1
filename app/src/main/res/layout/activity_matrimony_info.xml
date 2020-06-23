@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/matrimony_drawer"
     tools:context=".Matrimony_info"
-    android:background="#fbf7ea"
+
 
     >
 <RelativeLayout

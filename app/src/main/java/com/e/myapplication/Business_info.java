@@ -117,6 +117,30 @@ private DatabaseReference databaseReference;
                 startActivity(i1);
             }
         });
+        FirebaseDatabase.getInstance().getReference("Business_Details").orderByChild("contact_number").equalTo(phonenumber).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getChildrenCount() == 0)
+                {
+                    business_favourites.setVisibility(View.INVISIBLE);
+                    edit.setVisibility(View.INVISIBLE);
+                    firmname.setVisibility(View.INVISIBLE);
+                    proprietorname.setVisibility(View.INVISIBLE);
+                    category.setVisibility(View.INVISIBLE);
+                    city.setVisibility(View.INVISIBLE);
+                    address.setVisibility(View.INVISIBLE);
+                    description.setVisibility(View.INVISIBLE);
+                    contactnumber.setVisibility(View.INVISIBLE);
+                    image.setVisibility(View.INVISIBLE);
+                    imageedit.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void check()

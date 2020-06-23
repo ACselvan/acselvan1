@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Job_existing"></activity>
+        <activity android:name=".Matrimony_info_demo"></activity>
+        <activity android:name=".Job_existing" />
         <activity android:name=".Matrimony_View_Details" />
         <activity android:name=".Matrimony_Image_Edit" />
         <activity android:name=".Business_Image_Edit" />

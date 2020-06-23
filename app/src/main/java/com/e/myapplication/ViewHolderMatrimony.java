@@ -45,7 +45,7 @@ public class ViewHolderMatrimony extends RecyclerView.Adapter<ViewHolderMatrimon
     @NonNull
     @Override
     public ViewHolderMatrimony.myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolderMatrimony.myViewHolder(LayoutInflater.from(context).inflate(R.layout.matrimony_item,parent,false));
+        return new ViewHolderMatrimony.myViewHolder(LayoutInflater.from(context).inflate(R.layout.matrimony_item_demo,parent,false));
     }
 
     @Override
@@ -76,10 +76,10 @@ public class ViewHolderMatrimony extends RecyclerView.Adapter<ViewHolderMatrimon
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getChildrenCount() == 0)
                 {
-                    holder.favourite.setBackgroundResource(R.drawable.ic_favorite_border_black_24dp);
+                    holder.favourite.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
                 }else
                 {
-                    holder.favourite.setBackgroundResource(R.drawable.favourite);
+                    holder.favourite.setBackgroundResource(R.drawable.favourite1);
                 }
 
             }
@@ -111,7 +111,7 @@ holder.view_details.setOnClickListener(new View.OnClickListener() {
                                 {
                                     String id=mDatabase.push().getKey();
                                     mDatabase.child(phonenumber).child(id).child("mobile").setValue(up.get(position).getCellno());
-                                    holder.favourite.setBackgroundResource(R.drawable.favourite);
+                                    holder.favourite.setBackgroundResource(R.drawable.favourite1);
                                 }else
                                 {
                                     AlertDialog.Builder builder=new AlertDialog.Builder(context);
@@ -126,7 +126,7 @@ holder.view_details.setOnClickListener(new View.OnClickListener() {
                                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                     for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
                                                         appleSnapshot.getRef().removeValue();
-                                                        holder.favourite.setBackgroundResource(R.drawable.ic_favorite_border_black_24dp);
+                                                        holder.favourite.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
                                                         Toast.makeText(context,"profile removed from favourites successfully",Toast.LENGTH_SHORT).show();
                                                     }
                                                 }

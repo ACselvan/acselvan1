@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -64,6 +65,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         editor = sharedPreferences.edit();
         recyclerView_matrimony=(RecyclerView)findViewById(R.id.matrimony_recycle);
         recyclerView_matrimony.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView_matrimony.addItemDecoration(new DividerItemDecoration(recyclerView_matrimony.getContext(), DividerItemDecoration.VERTICAL));
         databaseReference= FirebaseDatabase.getInstance().getReference("Matrimony_Details");
         query2=databaseReference.orderByChild("cellno").equalTo(phonenumber);
         drawerLayout=(DrawerLayout)findViewById(R.id.matrimony_drawer);

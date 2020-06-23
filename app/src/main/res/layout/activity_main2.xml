@@ -20,19 +20,20 @@ android:layout_weight="2"
         >
 
         <LinearLayout
+            android:id="@+id/business_linear"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="4">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/linear_business"
+
                 android:layout_width="match_parent"
                 app:cardElevation="4dp"
                 android:layout_height="match_parent" >
 
                 <LinearLayout
-
+                    android:id="@+id/linear_business"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -46,31 +47,20 @@ android:layout_weight="2"
 
                         android:text="Business catalogue" />
 
-                    <androidx.viewpager.widget.ViewPager
-
-                        android:id="@+id/view_pager"
+                    <ImageView
+                        android:id="@+id/busiess_catelogue_image"
                         android:layout_width="match_parent"
-                        android:layout_height="165dp" />
+                        android:layout_height="wrap_content"
+                        tools:srcCompat="@tools:sample/avatars"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-            <com.viewpagerindicator.CirclePageIndicator
-                android:id="@+id/indicator"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:gravity="bottom"
-                android:padding="10dip"
-                app:centered="true"
-                app:fillColor="#ff8000"
-                app:pageColor="#fbf7ea"
-                app:snap="false" />
+
 
         </LinearLayout>
 
         <LinearLayout
-
+            android:id="@+id/marriage_linear"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -79,11 +69,12 @@ android:layout_weight="2"
             android:layout_weight="4">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/linear_matrimony"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
                 <LinearLayout
+                    android:id="@+id/linear_matrimony"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -96,27 +87,16 @@ android:layout_weight="2"
                         android:gravity="center"
 
                         android:text="Matrimony" />
-
-                    <androidx.viewpager.widget.ViewPager
-
-                        android:id="@+id/view_pager1"
+                    <ImageView
+                        android:id="@+id/marriage_image"
                         android:layout_width="match_parent"
-                        android:layout_height="165dp" />
+                        android:layout_height="wrap_content"
+                        tools:srcCompat="@tools:sample/avatars"/>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <com.viewpagerindicator.CirclePageIndicator
-                android:id="@+id/indicator1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:gravity="bottom"
-                android:padding="10dip"
-                app:centered="true"
-                app:fillColor="#ff8000"
-                app:pageColor="#fbf7ea"
-                app:snap="false" />
+
         </LinearLayout>
 
 
@@ -125,16 +105,16 @@ android:layout_weight="2"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginTop="10dp"
-
+            android:id="@+id/job_linear"
             android:layout_weight="4">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/linear_job"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
                 <LinearLayout
-
+                    android:id="@+id/linear_job"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -148,26 +128,15 @@ android:layout_weight="2"
 
                         android:text="Job Portal" />
 
-                    <androidx.viewpager.widget.ViewPager
-
-                        android:id="@+id/view_pager2"
+                    <ImageView
+                        android:id="@+id/job_image"
                         android:layout_width="match_parent"
-                        android:layout_height="165dp" />
+                        android:layout_height="wrap_content"
+                        tools:srcCompat="@tools:sample/avatars"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <com.viewpagerindicator.CirclePageIndicator
-                android:id="@+id/indicator2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:gravity="bottom"
-                android:padding="10dip"
-                app:centered="true"
-                app:fillColor="#ff8000"
-                app:pageColor="#fbf7ea"
-                app:snap="false" />
+
         </LinearLayout>
 
     </LinearLayout>
@@ -183,7 +152,14 @@ android:layout_weight="2"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:background="@drawable/button"/>
-
+    <Button
+        android:id="@+id/next"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="next"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button"/>
 
 
 </LinearLayout>

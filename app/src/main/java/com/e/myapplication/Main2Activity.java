@@ -43,7 +43,7 @@ import java.util.TimerTask;
 
 public class Main2Activity extends AppCompatActivity {
 TextView t1,t2,t3;
-Button signout,date;
+Button signout,date,next;
     private CardView linear_business,linear_job,linear_matrimony;
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
@@ -58,25 +58,25 @@ Button signout,date;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
     //private String[] urls = new String[]{"https://firebasestorage.googleapis.com/v0/b/saivities.appspot.com/o/Uploads%2FHoroscope%2F1592375971175.jpg?alt=media&token=4519883c-9dc7-468c-8750-382b46939604","https://firebasestorage.googleapis.com/v0/b/saivities.appspot.com/o/Uploads%2FHoroscope%2F1592375971175.jpg?alt=media&token=4519883c-9dc7-468c-8750-382b46939604","https://firebasestorage.googleapis.com/v0/b/saivities.appspot.com/o/Uploads%2FHoroscope%2F1592375971175.jpg?alt=media&token=4519883c-9dc7-468c-8750-382b46939604"};
-    private static ViewPager viewPager,viewPager1,viewPager2;
-    private static int currentPage = 0;
-    private static int NUM_PAGES = 0;
-    private CirclePageIndicator indicator,indicator1,indicator2;
-    private String[] urls;
-    private String[] urls1;
-    private String[] urls2;
+   LinearLayout matrimony_linear,business_linear,job_linear;
     private images up;
-    String a11,a2,a3;
+
+    ImageView matrimony_image,Business_image,job_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        linear_business=findViewById(R.id.linear_business);
-        linear_job=findViewById(R.id.linear_job);
-        linear_matrimony=findViewById(R.id.linear_matrimony);
+
         t1 = findViewById(R.id.t1);
         t2 = findViewById(R.id.t2);
         t3 = findViewById(R.id.t3);
+        business_linear = findViewById(R.id.linear_business);
+        matrimony_linear = findViewById(R.id.linear_matrimony);
+        job_linear = findViewById(R.id.linear_job);
+        matrimony_image = findViewById(R.id.marriage_image);
+        Business_image = findViewById(R.id.busiess_catelogue_image);
+        job_image = findViewById(R.id.job_image);
+        next = findViewById(R.id.next);
         slideLists = new ArrayList<>();
         sharedPreferences = getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         a1 = sharedPreferences.getString("phonenumber", "");
@@ -106,7 +106,7 @@ Button signout,date;
                 startActivity(i1);
             }
         });
-        t1.setOnClickListener(new View.OnClickListener() {
+        business_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Main2Activity.this, Business_catalogue.class);
@@ -114,8 +114,14 @@ Button signout,date;
 
             }
         });
-
-        t2.setOnClickListener(new View.OnClickListener() {
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i1=new Intent(Main2Activity.this,Matrimony_info_demo.class);
+                startActivity(i1);
+            }
+        });
+        matrimony_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -186,7 +192,7 @@ Button signout,date;
                 });
             }
         });
-        t3.setOnClickListener(new View.OnClickListener() {
+        job_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent k = new Intent(Main2Activity.this, Work_Portal.class);
@@ -228,166 +234,19 @@ Button signout,date;
 
 
     }
-private void init()
-{viewPager=findViewById(R.id.view_pager);
-    viewPager.setAdapter(new ViewPagerAdapter(Main2Activity.this,urls));
-    indicator = (CirclePageIndicator)
-            findViewById(R.id.indicator);
 
-    indicator.setViewPager(viewPager);
-
-    final float density = getResources().getDisplayMetrics().density;
-    indicator.setRadius(5 * density);
-
-    NUM_PAGES = urls.length;
-    final Handler handler = new Handler();
-    final Runnable Update = new Runnable() {
-        public void run() {
-            if (currentPage == NUM_PAGES) {
-                currentPage = 0;
-            }
-            viewPager.setCurrentItem(currentPage++, true);
-        }
-    };
-    Timer swipeTimer = new Timer();
-    swipeTimer.schedule(new TimerTask() {
-        @Override
-        public void run() {
-            handler.post(Update);
-        }
-    }, 9000, 9000);
-    indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-        @Override
-        public void onPageSelected(int position) {
-            currentPage = position;
-
-        }
-
-        @Override
-        public void onPageScrolled(int pos, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int pos) {
-
-        }
-    });
-
-}
-private void init1()
-{
-    viewPager1=findViewById(R.id.view_pager1);
-    viewPager1.setAdapter(new ViewPagerAdapter(Main2Activity.this,urls1));
-    indicator1 = (CirclePageIndicator)
-            findViewById(R.id.indicator1);
-
-    indicator1.setViewPager(viewPager1);
-
-    final float density = getResources().getDisplayMetrics().density;
-    indicator1.setRadius(5 * density);
-
-    NUM_PAGES = urls1.length;
-    final Handler handler = new Handler();
-    final Runnable Update = new Runnable() {
-        public void run() {
-            if (currentPage == NUM_PAGES) {
-                currentPage = 0;
-            }
-            viewPager1.setCurrentItem(currentPage++, true);
-        }
-    };
-    Timer swipeTimer = new Timer();
-    swipeTimer.schedule(new TimerTask() {
-        @Override
-        public void run() {
-            handler.post(Update);
-        }
-    }, 9000, 9000);
-    indicator1.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-        @Override
-        public void onPageSelected(int position) {
-            currentPage = position;
-
-        }
-
-        @Override
-        public void onPageScrolled(int pos, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int pos) {
-
-        }
-    });
-
-}
-
-    private void init2()
-    {
-        viewPager2=findViewById(R.id.view_pager2);
-        viewPager2.setAdapter(new ViewPagerAdapter(Main2Activity.this,urls2));
-        indicator2 = (CirclePageIndicator)
-                findViewById(R.id.indicator2);
-
-        indicator2.setViewPager(viewPager2);
-
-        final float density = getResources().getDisplayMetrics().density;
-        indicator2.setRadius(5 * density);
-
-        NUM_PAGES = urls2.length;
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
-                }
-                viewPager2.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 9000, 9000);
-        indicator2.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
-
-            }
-
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int pos) {
-
-            }
-        });
-
-    }
 private void slide()
 {
-    FirebaseDatabase.getInstance().getReference("business_images").addValueEventListener(new ValueEventListener() {
+    FirebaseDatabase.getInstance().getReference("homepage_images").addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
                 up = dataSnapshot1.getValue(images.class);
-                a11=up.getImage();
-                a2=up.getImage1();
-                a3=up.getImage2();
+
+
+                Picasso.with(getApplicationContext()).load(up.getImage()).into(Business_image);
             }
-            urls = new String[]{a11,a2,a3};
-            init();
+
         }
 
         @Override
@@ -398,17 +257,15 @@ private void slide()
 }
 private void slide1()
 {
-    FirebaseDatabase.getInstance().getReference("matrimony_images").addValueEventListener(new ValueEventListener() {
+    FirebaseDatabase.getInstance().getReference("homepage_images").addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
                 up = dataSnapshot1.getValue(images.class);
-                a11=up.getImage();
-                a2=up.getImage1();
-                a3=up.getImage2();
+
+                Picasso.with(getApplicationContext()).load(up.getImage1()).into(matrimony_image);
             }
-            urls1 = new String[]{a11,a2,a3};
-            init1();
+
         }
 
         @Override
@@ -419,17 +276,14 @@ private void slide1()
 }
 private void slide2()
 {
-    FirebaseDatabase.getInstance().getReference("job_portal_images").addValueEventListener(new ValueEventListener() {
+    FirebaseDatabase.getInstance().getReference("homepage_images").addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
                 up = dataSnapshot1.getValue(images.class);
-                a11=up.getImage();
-                a2=up.getImage1();
-                a3=up.getImage2();
+                Picasso.with(getApplicationContext()).load(up.getImage2()).into(job_image);
             }
-            urls2 = new String[]{a11,a2,a3};
-            init2();
+
         }
 
         @Override

@@ -60,7 +60,7 @@ public class Employportal extends AppCompatActivity {
         q3=findViewById(R.id.q3);
         q4=findViewById(R.id.q4);
         q5=findViewById(R.id.q5);
-        getSupportActionBar().setTitle("Hello world App");
+        getSupportActionBar().setTitle("Your Ad");
         date_text=(TextView)findViewById(R.id.date_text);
         time_text=(TextView)findViewById(R.id.time_text);
         b1=findViewById(R.id.b1);
