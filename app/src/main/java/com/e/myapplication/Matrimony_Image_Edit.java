@@ -65,7 +65,7 @@ Button get_horoscope,upload_horoscope,getimage,uploadimage;
         phonenumber=sharedPreferences.getString("phonenumber","");
         Matrimony_details = FirebaseDatabase.getInstance().getReference("Matrimony_Details");
         stt = FirebaseStorage.getInstance().getReference("Uploads/profilephoto");
-
+        getSupportActionBar().setTitle("Edit Matrimony Images");
         st = FirebaseStorage.getInstance().getReference("Uploads/Horoscope");
         query=Matrimony_details.orderByChild("cellno").equalTo(phonenumber);
         upload_horoscope.setVisibility(View.INVISIBLE);

@@ -76,27 +76,7 @@ public class NR extends AppCompatActivity {
         setContentView(R.layout.activity_nr);
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         phonenumber=sharedPreferences.getString("phonenumber","");
-        /*FirebaseDatabase.getInstance().getReference("Matrimony_Details").orderByChild("cellno").equalTo(phonenumber).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getChildrenCount() == 0)
-                {
-                    Toast.makeText(NR.this,"new user ",Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Intent i1=new Intent(NR.this,Matrimony_info.class);
-                    startActivity(i1);
-                    finish();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-*/
+        getSupportActionBar().setTitle("Matrimony Profile");
         editor=sharedPreferences.edit();
     radioGroup =findViewById(R.id.radioGroup);
         Name = findViewById(R.id.Name);

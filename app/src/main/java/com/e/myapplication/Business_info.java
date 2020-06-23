@@ -72,6 +72,7 @@ private DatabaseReference databaseReference;
         toggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        getSupportActionBar().setTitle("Business List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         matrimony_navigation=(NavigationView)findViewById(R.id.business_navigation);
         matrimony_navigation.setNavigationItemSelectedListener(this);

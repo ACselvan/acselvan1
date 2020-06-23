@@ -86,7 +86,7 @@ public class Getting_Business_details extends AppCompatActivity {
         businessCategoryTable1= FirebaseDatabase.getInstance().getReference("city_business");
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         phonenumber=sharedPreferences.getString("phonenumber","");
-
+        getSupportActionBar().setTitle("Enter business details");
         Business_details= FirebaseDatabase.getInstance().getReference("Business_Details");
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("Categories");
         st = FirebaseStorage.getInstance().getReference("Uploads/business");

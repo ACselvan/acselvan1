@@ -81,7 +81,7 @@ Button signout,date;
         sharedPreferences = getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         a1 = sharedPreferences.getString("phonenumber", "");
         databaseReference = FirebaseDatabase.getInstance().getReference("user");
-        //databaseReference2=FirebaseDatabase.getInstance().getReference("images");
+        getSupportActionBar().setTitle("Home");
         //query3=databaseReference2;
         query = databaseReference.orderByChild("mobile").equalTo(a1);
         query1 = databaseReference.orderByChild("mobile").equalTo(a1);

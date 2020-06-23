@@ -58,6 +58,7 @@ ImageView hire,work;
         databaseReference1= FirebaseDatabase.getInstance().getReference("Employer_Details");
         query1=databaseReference1.orderByChild("phone").equalTo(a1);
         editor=sharedPreferences.edit();
+        getSupportActionBar().setTitle("Work Portal");
         hire=(ImageView)findViewById(R.id.work_hire);
         slide2();
         work=(ImageView)findViewById(R.id.work_employee);

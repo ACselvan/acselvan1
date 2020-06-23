@@ -70,6 +70,7 @@ List<String> CategoryList = new ArrayList<>();
         databaseReference= FirebaseDatabase.getInstance().getReference("user");
         query=databaseReference.orderByChild("mobile").equalTo(a1);
         editor=sharedPreferences.edit();
+        getSupportActionBar().setTitle("Business");
         addbusiness=findViewById(R.id.addbusiness);
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("Categories");
 

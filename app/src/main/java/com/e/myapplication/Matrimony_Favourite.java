@@ -63,7 +63,7 @@ public class Matrimony_Favourite extends AppCompatActivity implements Navigation
         list=new ArrayList<>();
         databaseReference= FirebaseDatabase.getInstance().getReference("mat_fav");
         databaseReference1= FirebaseDatabase.getInstance().getReference("Matrimony_Details");
-        //query1=databaseReference1.orderByChild("cellno").equalTo(phonenumber);
+        getSupportActionBar().setTitle("Matrimony Favourites");
         query=databaseReference.child(phonenumber);
         check();
         matrimony_favourites.setOnClickListener(new View.OnClickListener() {

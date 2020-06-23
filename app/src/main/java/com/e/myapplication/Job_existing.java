@@ -41,6 +41,7 @@ public class Job_existing extends AppCompatActivity {
         recyclerView_job.setLayoutManager(new LinearLayoutManager(this));
         query= FirebaseDatabase.getInstance().getReference("Employer_Details").orderByChild("phone").equalTo(phonenumber);
         list=new ArrayList<>();
+        getSupportActionBar().setTitle("Your Ad");
         editor = sharedPreferences.edit();
         query.addValueEventListener(new ValueEventListener() {
             @Override

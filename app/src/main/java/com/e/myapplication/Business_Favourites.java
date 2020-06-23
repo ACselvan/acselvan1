@@ -56,6 +56,7 @@ public class Business_Favourites extends AppCompatActivity implements Navigation
         toggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        getSupportActionBar().setTitle("Business Favourites");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         matrimony_navigation=(NavigationView)findViewById(R.id.businessfavourite_navigation);
         matrimony_navigation.setNavigationItemSelectedListener(this);

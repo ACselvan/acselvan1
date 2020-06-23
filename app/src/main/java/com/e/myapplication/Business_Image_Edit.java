@@ -62,6 +62,7 @@ public class Business_Image_Edit extends AppCompatActivity {
         st = FirebaseStorage.getInstance().getReference("Uploads/business");
         image_progress=(ProgressBar)findViewById(R.id.business_progress_edit);
         uploadimage.setVisibility(View.INVISIBLE);
+        getSupportActionBar().setTitle("Edit Business Image");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

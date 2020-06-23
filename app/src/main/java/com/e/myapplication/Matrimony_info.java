@@ -82,8 +82,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         education=(TextView)drawerLayout.findViewById(R.id.drawer_education_matrimony);
         height=(TextView)drawerLayout.findViewById(R.id.drawer_height_matrimony);
         profilimage=(ImageView) drawerLayout.findViewById(R.id.profileimage_drawer_matrimony);
-        //Toast.makeText(getApplicationContext(),id_user,Toast.LENGTH_SHORT).show();
-
+        getSupportActionBar().setTitle("Matrimony List");
         toggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();

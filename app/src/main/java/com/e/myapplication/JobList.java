@@ -45,6 +45,7 @@ public class JobList extends AppCompatActivity {
         databaseReference= FirebaseDatabase.getInstance().getReference("Employer_Details");
         query=FirebaseDatabase.getInstance().getReference("Employer_Details");
         list=new ArrayList<>();
+        getSupportActionBar().setTitle("Available Jobs");
         sharedPreferences = getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         check();

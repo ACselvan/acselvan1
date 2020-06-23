@@ -48,6 +48,7 @@ public class Matrimony_View_Details extends AppCompatActivity {
         job=findViewById(R.id.drawer_job_matrimony_details);
         education=findViewById(R.id.drawer_education_matrimony_details);
         height=findViewById(R.id.drawer_height_matrimony_details);
+        getSupportActionBar().setTitle("Details");
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         databaseReference= FirebaseDatabase.getInstance().getReference("Matrimony_Details");
         query2=databaseReference.orderByChild("cellno").equalTo(phonenumber);

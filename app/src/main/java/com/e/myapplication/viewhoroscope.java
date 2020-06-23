@@ -32,8 +32,7 @@ TextView t;
         t.setText(image);
         editor = sharedPreferences.edit();
         Picasso.with(this).load(image).into(iv);
-       // iv.setImageURI(Uri.parse(image));
-
+        getSupportActionBar().setTitle("Horoscope");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

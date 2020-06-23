@@ -65,6 +65,7 @@ private     TextView cellno,sex;
         submit=(Button)findViewById(R.id.submit_matrimony_edit);
         sex=(TextView)findViewById(R.id.sex_edit);
         spinner=findViewById(R.id.spinner_matrimonyedit);
+        getSupportActionBar().setTitle("Wdit Matrimony Profile");
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("city_business");
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         phonenumber=sharedPreferences.getString("phonenumber","");

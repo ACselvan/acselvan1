@@ -62,6 +62,7 @@ TextView mobile;
         phonenumber=sharedPreferences.getString("phonenumber","");
         query=Business_details.orderByChild("contact_number").equalTo(phonenumber);
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("Categories");
+        getSupportActionBar().setTitle("Business Edit");
         businessCategoryTable.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
