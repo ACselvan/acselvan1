@@ -49,22 +49,5 @@
         android:background="@drawable/button"
         />
 </LinearLayout>
-    <androidx.viewpager.widget.ViewPager
 
-        android:id="@+id/view_pager_business"
-        android:layout_width="match_parent"
-        android:layout_height="165dp" />
-
-<com.viewpagerindicator.CirclePageIndicator
-android:id="@+id/indicator_business"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:layout_alignParentBottom="true"
-android:layout_centerHorizontal="true"
-android:gravity="bottom"
-android:padding="10dip"
-app:centered="true"
-app:fillColor="#ff8000"
-app:pageColor="#fbf7ea"
-app:snap="false" />
 </LinearLayout>

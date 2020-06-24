@@ -40,13 +40,7 @@ ImageView hire,work;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
     DatabaseReference databaseReference,databaseReference1;
-    private static ViewPager viewPager2;
-    private static int currentPage = 0;
-    private static int NUM_PAGES = 0;
-    private CirclePageIndicator indicator2;
-    private String[] urls2;
-    private images up;
-    String a11,a2,a3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +54,7 @@ ImageView hire,work;
         editor=sharedPreferences.edit();
         getSupportActionBar().setTitle("Work Portal");
         hire=(ImageView)findViewById(R.id.work_hire);
-        slide2();
+
         work=(ImageView)findViewById(R.id.work_employee);
         hire.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,76 +154,7 @@ ImageView hire,work;
             }
         });
     }
-    private void slide2()
-    {
-        FirebaseDatabase.getInstance().getReference("job_portal_images").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
-                    up = dataSnapshot1.getValue(images.class);
-                    a11=up.getImage();
-                    a2=up.getImage1();
-                    a3=up.getImage2();
-                }
-                urls2 = new String[]{a11,a2,a3};
-                init2();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-    private void init2()
-    {
-        viewPager2=findViewById(R.id.view_pager_job);
-        viewPager2.setAdapter(new ViewPagerAdapter(Work_Portal.this,urls2));
-        indicator2 = (CirclePageIndicator)
-                findViewById(R.id.indicator_job);
-
-        indicator2.setViewPager(viewPager2);
-
-        final float density = getResources().getDisplayMetrics().density;
-        indicator2.setRadius(5 * density);
-
-        NUM_PAGES = urls2.length;
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
-                }
-                viewPager2.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 9000, 9000);
-        indicator2.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
-
-            }
-
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int pos) {
-
-            }
-        });
-
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_logandhome,menu);

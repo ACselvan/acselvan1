@@ -52,7 +52,7 @@ public class Getting_Business_details extends AppCompatActivity {
     EditText t7,t8,t9,t10,r4,r6,city_business;
     Button b2;
     Uri ImageUri;
-    String imageurl,city="",phonenumber;
+    String imageurl="",city="",phonenumber;
     String Firmname,Address,Timing,Contact_number,category,Description,Proprietor_name;
     DatabaseReference Business_details;
     private ImageView image_business;
@@ -152,7 +152,8 @@ public class Getting_Business_details extends AppCompatActivity {
           //  Timing=t9.getText().toString().trim();
                         Firmname=t10.getText().toString().trim();
             city=spinner.getSelectedItem().toString();
-            if (!category.equals("")&&!Contact_number.equals("")&&!Proprietor_name.equals("")&&!Address.equals("")&&!Description.equals("")&&!Firmname.equals("")&&!city.equals("")) {
+
+            if (!category.equals("")&&!Contact_number.equals("")&&!Proprietor_name.equals("")&&!Address.equals("")&&!Description.equals("")&&!Firmname.equals("")&&!city.equals("")&&!imageurl.equals("")) {
 
 
                 String id = Business_details.push().getKey();

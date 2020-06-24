@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,10 +33,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Matrimony_info extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button matrimony_favourites,editprofile,editimage;
@@ -54,7 +58,16 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
     private ViewHolderMatrimony adapter;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
-
+    DatabaseReference businessCategoryTable;
+    List<String> CategoryList = new ArrayList<>();
+    private static ViewPager viewPager;
+    private static int currentPage = 0;
+    private static int NUM_PAGES = 0;
+    private CirclePageIndicator indicator;
+    private String[] urls;
+    int i = 0;
+    private String a11,a2,a3,a4,a5,a7,a6,a8;
+    private images up1;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +123,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         query1=databaseReference.orderByChild("cellno").equalTo(phonenumber);
         list=new ArrayList<>();
+        slide();
         editimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -283,6 +297,80 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
             finish();
 
         }
+
+    }
+    private void slide()
+    {
+        FirebaseDatabase.getInstance().getReference("business_images").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+                    up1 = dataSnapshot1.getValue(images.class);
+                    a11=up1.getImage();
+                    a2=up1.getImage1();
+                    a3=up1.getImage2();
+                    a4=up1.getImage3();
+                    a5=up1.getImage4();
+                    a6=up1.getImage5();
+                    a7=up1.getImage6();
+                    a8=up1.getImage7();
+                }
+                urls = new String[]{a11,a2,a3,a4,a5,a6,a7,a8};
+                init();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void init()
+    {viewPager=findViewById(R.id.view_pager_business);
+        viewPager.setAdapter(new ViewPagerAdapter(Matrimony_info.this,urls));
+        indicator = (CirclePageIndicator)
+                findViewById(R.id.indicator_business);
+
+        indicator.setViewPager(viewPager);
+
+        final float density = getResources().getDisplayMetrics().density;
+        indicator.setRadius(5 * density);
+
+        NUM_PAGES = urls.length;
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == NUM_PAGES) {
+                    currentPage = 0;
+                }
+                viewPager.setCurrentItem(currentPage++, true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 9000, 9000);
+        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPage = position;
+
+            }
+
+            @Override
+            public void onPageScrolled(int pos, float arg1, int arg2) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int pos) {
+
+            }
+        });
 
     }
 }

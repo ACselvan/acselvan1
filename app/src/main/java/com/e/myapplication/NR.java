@@ -180,8 +180,11 @@ public class NR extends AppCompatActivity {
                     city=spinner.getSelectedItem().toString();
                    String id = Matrimony_details.push().getKey();
 
-
-                        if((HoroscopeImage!=null)&&(profileImage!=null)&&!Namee.equals("")&&!Sexx.equals("")&&!Heightt.equals("")&&!Incomee.equals("")&&!educationn.equals("")&&!Jobb.equals("")&&!Mnn.equals("")&&!Fnn.equals("")&&!sbll.equals("")&&!companyy.equals("")&&!Agee.equals("")&&!city.equals("")) {
+                            if (profileImage==null)
+                            {
+                                profileImage="https://firebasestorage.googleapis.com/v0/b/saivities.appspot.com/o/Uploads%2Fempty%20image%2FImages-icon.png?alt=media&token=01bd9557-6a40-441c-bee0-5f3bd40d5f7b";
+                            }
+                        if((HoroscopeImage!=null)&&!Namee.equals("")&&!Sexx.equals("")&&!Heightt.equals("")&&!Incomee.equals("")&&!educationn.equals("")&&!Jobb.equals("")&&!Mnn.equals("")&&!Fnn.equals("")&&!sbll.equals("")&&!companyy.equals("")&&!Agee.equals("")&&!city.equals("")) {
 
                             String idd = Matrimony_details.push().getKey();
                             //  String imageurl = uri.toString();

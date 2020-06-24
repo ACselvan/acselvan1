@@ -56,7 +56,7 @@ public class ViewHolderMatrimonyFavourite extends RecyclerView.Adapter<ViewHolde
         holder.company.setText(up.get(position).getCompanyy());
         holder.income.setText(up.get(position).getIncome());
         holder.phonenumber.setText(up.get(position).getCellno());
-        Picasso.with(context).load(up.get(position).getImageurl()).into(holder.iv);
+        Picasso.with(context).load(up.get(position).getProfileImage()).into(holder.iv);
         holder.viewhoroscope.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

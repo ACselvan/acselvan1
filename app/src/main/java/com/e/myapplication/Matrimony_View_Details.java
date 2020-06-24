@@ -58,7 +58,7 @@ public class Matrimony_View_Details extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
                     up = dataSnapshot1.getValue(up1.class);
-                    Picasso.with(getApplicationContext()).load(up.getImageurl()).into(profilimage);
+                    Picasso.with(getApplicationContext()).load(up.getProfileImage()).into(profilimage);
                     name.setText("name:     "+up.getName());
                     fathername.setText("father name:  "+up.getFathersname());
                     mothername.setText("mother name:  "+up.getMothersname());
