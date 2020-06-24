@@ -7,8 +7,10 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,6 +63,8 @@ public class ViewHolderMatrimony extends RecyclerView.Adapter<ViewHolderMatrimon
         holder.company.setText(up.get(position).getCompanyy());
         holder.income.setText(up.get(position).getIncome());
         holder.phonenumber.setText(up.get(position).getCellno());
+        holder.left_anime.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_transition_animetion));
+        holder.right_anime.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
         Picasso.with(context).load(up.get(position).getProfileImage()).into(holder.iv);
         holder.viewhoroscope.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,7 +182,7 @@ holder.view_details.setOnClickListener(new View.OnClickListener() {
         TextView name,job,company,income,phonenumber;
         ImageView iv;
         Button viewhoroscope,favourite,view_details;
-
+        LinearLayout left_anime,right_anime;
         myViewHolder(@NonNull View itemView) {
             super(itemView);
             name=(TextView)itemView.findViewById(R.id.name);
@@ -190,6 +194,8 @@ holder.view_details.setOnClickListener(new View.OnClickListener() {
             viewhoroscope=(Button)itemView.findViewById(R.id.view_horoscope);
             favourite=(Button)itemView.findViewById(R.id.fav);
             view_details=(Button)itemView.findViewById(R.id.view_details);
+            left_anime=(LinearLayout)itemView.findViewById(R.id.left_anime_matrimony);
+            right_anime=(LinearLayout)itemView.findViewById(R.id.right_anime_matrimony);
         }
     }
 }

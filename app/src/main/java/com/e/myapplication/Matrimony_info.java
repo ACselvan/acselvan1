@@ -43,7 +43,7 @@ import java.util.TimerTask;
 
 public class Matrimony_info extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button matrimony_favourites,editprofile,editimage;
-    private TextView name,fathername,mothername,cellno,sex,age,siblings,income,job,education,height;
+    private TextView name,fathername,mothername,cellno,sex,age,siblings,income,job,education,height,city;
     private Query query,query1,query2;
     private ImageView profilimage;
     private String imageurl;
@@ -53,7 +53,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
     private RecyclerView recyclerView_matrimony;
     String usersGender,gender,phonenumber,id_user;
     up1 up;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference,databaseReference1;
     ArrayList<up1> list;
     private ViewHolderMatrimony adapter;
     private SharedPreferences.Editor editor;
@@ -80,6 +80,9 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         recyclerView_matrimony.setLayoutManager(new LinearLayoutManager(this));
         recyclerView_matrimony.addItemDecoration(new DividerItemDecoration(recyclerView_matrimony.getContext(), DividerItemDecoration.VERTICAL));
         databaseReference= FirebaseDatabase.getInstance().getReference("Matrimony_Details");
+        databaseReference1=FirebaseDatabase.getInstance().getReference("business_images");
+        databaseReference1.keepSynced(true);
+        databaseReference.keepSynced(true);
         query2=databaseReference.orderByChild("cellno").equalTo(phonenumber);
         drawerLayout=(DrawerLayout)findViewById(R.id.matrimony_drawer);
         matrimony_favourites=(Button)drawerLayout.findViewById(R.id.matrimony_favourites);
@@ -96,6 +99,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         job=(TextView)drawerLayout.findViewById(R.id.drawer_job_matrimony);
         education=(TextView)drawerLayout.findViewById(R.id.drawer_education_matrimony);
         height=(TextView)drawerLayout.findViewById(R.id.drawer_height_matrimony);
+        city=(TextView)drawerLayout.findViewById(R.id.drawer_city_matrimony);
         profilimage=(ImageView) drawerLayout.findViewById(R.id.profileimage_drawer_matrimony);
         getSupportActionBar().setTitle("Matrimony List");
         toggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
@@ -118,6 +122,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         job=(TextView)v1.findViewById(R.id.drawer_job_matrimony);
         education=(TextView)v1.findViewById(R.id.drawer_education_matrimony);
         height=(TextView)v1.findViewById(R.id.drawer_height_matrimony);
+        city=(TextView)v1.findViewById(R.id.drawer_city_matrimony);
         profilimage=(ImageView) v1.findViewById(R.id.profileimage_drawer_matrimony);
         editimage=(Button)v1.findViewById(R.id.matrimony_editimage);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -231,17 +236,18 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
                     for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
                         up = dataSnapshot1.getValue(up1.class);
                         Picasso.with(getApplicationContext()).load(up.getProfileImage()).into(profilimage);
-                        name.setText("name:     "+up.getName());
-                        fathername.setText("father name:  "+up.getFathersname());
-                        mothername.setText("mother name:  "+up.getMothersname());
-                        cellno.setText("mobile no:      "+up.getCellno());
-                        sex.setText("sex:       "+up.getSex());
-                        age.setText("age:       "+up.getAge());
-                        siblings.setText("siblings:  "+up.getSiblings());
-                        education.setText("education:  "+up.getEducation());
-                        income.setText("income:     "+up.getIncome());
-                        job.setText("job        "+up.getJob());
-                        height.setText("height: "+up.getHeight());
+                        name.setText(up.getName());
+                        fathername.setText(up.getFathersname());
+                        mothername.setText(up.getMothersname());
+                        cellno.setText(up.getCellno());
+                        sex.setText(up.getSex());
+                        age.setText(up.getAge());
+                        siblings.setText(up.getSiblings());
+                        education.setText(up.getEducation());
+                        income.setText(up.getIncome());
+                        job.setText(up.getJob());
+                        height.setText(up.getHeight());
+                        city.setText(up.getCity());
                     }
                 }
 

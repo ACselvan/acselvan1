@@ -45,7 +45,8 @@
         <activity android:name=".Job_Portal" />
         <activity android:name=".Matrimony" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class Matrimony_View_Details extends AppCompatActivity {
-    private TextView name,fathername,mothername,cellno,sex,age,siblings,income,job,education,height;
+    private TextView name,fathername,mothername,cellno,sex,age,siblings,income,job,education,height,city;
     private ImageView profilimage;
     private DatabaseReference databaseReference;
     private Query query2;
@@ -48,6 +48,7 @@ public class Matrimony_View_Details extends AppCompatActivity {
         job=findViewById(R.id.drawer_job_matrimony_details);
         education=findViewById(R.id.drawer_education_matrimony_details);
         height=findViewById(R.id.drawer_height_matrimony_details);
+        city=findViewById(R.id.drawer_city_view_details);
         getSupportActionBar().setTitle("Details");
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         databaseReference= FirebaseDatabase.getInstance().getReference("Matrimony_Details");
@@ -59,17 +60,18 @@ public class Matrimony_View_Details extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
                     up = dataSnapshot1.getValue(up1.class);
                     Picasso.with(getApplicationContext()).load(up.getProfileImage()).into(profilimage);
-                    name.setText("name:     "+up.getName());
-                    fathername.setText("father name:  "+up.getFathersname());
-                    mothername.setText("mother name:  "+up.getMothersname());
-                    cellno.setText("mobile no:      "+up.getCellno());
-                    sex.setText("sex:       "+up.getSex());
-                    age.setText("age:       "+up.getAge());
-                    siblings.setText("siblings:  "+up.getSiblings());
-                    education.setText("education:  "+up.getEducation());
-                    income.setText("income:     "+up.getIncome());
-                    job.setText("job        "+up.getJob());
-                    height.setText("height: "+up.getHeight());
+                    name.setText(up.getName());
+                    fathername.setText(up.getFathersname());
+                    mothername.setText(up.getMothersname());
+                    cellno.setText(up.getCellno());
+                    sex.setText(up.getSex());
+                    age.setText(up.getAge());
+                    siblings.setText(up.getSiblings());
+                    education.setText(up.getEducation());
+                    income.setText(up.getIncome());
+                    job.setText(up.getJob());
+                    height.setText(up.getHeight());
+                    city.setText(up.getCity());
                 }
             }
 

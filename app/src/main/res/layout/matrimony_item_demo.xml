@@ -11,6 +11,7 @@
     android:orientation="horizontal"
     >
     <LinearLayout
+        android:id="@+id/left_anime_matrimony"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -34,7 +35,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-
+        android:id="@+id/right_anime_matrimony"
         android:paddingLeft="5dp"
         >
         <TextView
