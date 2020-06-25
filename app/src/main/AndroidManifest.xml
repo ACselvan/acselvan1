@@ -27,7 +27,8 @@
         <activity android:name=".Business_info" />
         <activity android:name=".BusinessPortal" />
         <activity android:name=".Work_Portal" />
-        <activity android:name=".logIn" />
+        <activity android:name=".logIn"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".signup" />
         <activity android:name=".main" />
         <activity android:name=".ResetPasswordActivity" />

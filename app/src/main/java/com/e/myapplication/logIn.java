@@ -57,7 +57,7 @@ Button login_auth,resend_auth,sign_up_auth;
         number_auth=(EditText)findViewById(R.id.number_edit);
         login_auth=(Button)findViewById(R.id.login_auth);
        query=FirebaseDatabase.getInstance().getReference("user");
-        resend_auth=(Button)findViewById(R.id.resend_auth);
+       // resend_auth=(Button)findViewById(R.id.resend_auth);
 
         login_auth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,14 +112,14 @@ Button login_auth,resend_auth,sign_up_auth;
             }
         });
 
-        resend_auth.setOnClickListener(new View.OnClickListener() {
+        /*resend_auth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
                 finish();
                 Toast.makeText(getApplicationContext(),"log out",Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         
     }
 

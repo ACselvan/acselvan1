@@ -51,6 +51,8 @@ android:layout_weight="2"
                         android:id="@+id/busiess_catelogue_image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="3"
+
                         tools:srcCompat="@tools:sample/avatars"/>
                 </LinearLayout>
 
@@ -91,7 +93,8 @@ android:layout_weight="2"
                         android:id="@+id/marriage_image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:srcCompat="@tools:sample/avatars"/>
+                        tools:srcCompat="@tools:sample/avatars"
+                        android:layout_weight="3"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -132,7 +135,8 @@ android:layout_weight="2"
                         android:id="@+id/job_image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:srcCompat="@tools:sample/avatars"/>
+                        tools:srcCompat="@tools:sample/avatars"
+                        android:layout_weight="3"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -144,14 +148,7 @@ android:layout_weight="2"
 
 
 
-        <Button
-            android:id="@+id/signout"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:text="sign out"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/button"/>
+
 
 
 

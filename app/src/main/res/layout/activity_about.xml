@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-
+    android:padding="10dp"
     >
     <TextView
 
@@ -23,20 +23,22 @@
         android:gravity="center_horizontal"
         />
     <TextView
-
+        android:textAlignment="center"
+        android:justificationMode="inter_word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="the credentials of the details provided by the users habe to be verified only by fellow connects .The app developer or manager doesn't provide any validity to due above aspects "
+        android:layout_gravity="center_horizontal"
+        android:text="  the credentials of the details provided by the users habe to be verified only by fellow connects .The app developer or manager doesn't provide any validity to due above aspects "
         android:textColor="#000000"
         android:textSize="25sp"
          />
     <TextView
-
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="The job portal is also onlyh a connecting means and does not suppport or involve in aspects of handing over any certificates nor providing money to this, in this process of getting selected for a job"
+        android:justificationMode="inter_word"
+        android:text="  The job portal is also onlyh a connecting means and does not suppport or involve in aspects of handing over any certificates nor providing money to this, in this process of getting selected for a job"
         android:textColor="#000000"
         android:textSize="25sp"
         android:gravity="center_horizontal"

@@ -43,7 +43,7 @@ import java.util.TimerTask;
 
 public class Main2Activity extends AppCompatActivity {
 TextView t1,t2,t3;
-Button signout,date,next;
+Button date,next;
     private CardView linear_business,linear_job,linear_matrimony;
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
@@ -93,9 +93,9 @@ Button signout,date,next;
         slide();
         slide1();
         slide2();
-        signout = (Button) findViewById(R.id.signout);
+
         //check();
-        signout.setOnClickListener(new View.OnClickListener() {
+        /*signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
@@ -106,7 +106,7 @@ Button signout,date,next;
                 Intent i1 = new Intent(Main2Activity.this, logIn.class);
                 startActivity(i1);
             }
-        });
+        });*/
         business_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

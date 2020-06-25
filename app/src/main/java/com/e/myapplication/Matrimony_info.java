@@ -76,6 +76,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         phonenumber=sharedPreferences.getString("phonenumber","");
         editor = sharedPreferences.edit();
+
         recyclerView_matrimony=(RecyclerView)findViewById(R.id.matrimony_recycle);
         recyclerView_matrimony.setLayoutManager(new LinearLayoutManager(this));
         recyclerView_matrimony.addItemDecoration(new DividerItemDecoration(recyclerView_matrimony.getContext(), DividerItemDecoration.VERTICAL));
@@ -83,6 +84,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         databaseReference1=FirebaseDatabase.getInstance().getReference("business_images");
         databaseReference1.keepSynced(true);
         databaseReference.keepSynced(true);
+
         query2=databaseReference.orderByChild("cellno").equalTo(phonenumber);
         drawerLayout=(DrawerLayout)findViewById(R.id.matrimony_drawer);
         matrimony_favourites=(Button)drawerLayout.findViewById(R.id.matrimony_favourites);
