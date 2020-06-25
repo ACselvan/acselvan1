@@ -311,7 +311,13 @@ Button get_horoscope,upload_horoscope,getimage,uploadimage;
             startActivity(i1);
             finish();
         }
+        if (id==R.id.about)
+        {
 
+            Intent i1 = new Intent(Matrimony_Image_Edit.this, About.class);
+            startActivity(i1);
+
+        }
         return super.onOptionsItemSelected(item);
     }
     @Override

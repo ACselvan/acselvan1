@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".About">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    >
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Information You Should Know about our app"
+        android:textColor="#0000FF"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:textAlignment="left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="the credentials of the details provided by the users habe to be verified only by fellow connects .The app developer or manager doesn't provide any validity to due above aspects "
+        android:textColor="#000000"
+        android:textSize="25sp"
+         />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="The job portal is also onlyh a connecting means and does not suppport or involve in aspects of handing over any certificates nor providing money to this, in this process of getting selected for a job"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+</LinearLayout>
+</ScrollView>

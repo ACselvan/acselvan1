@@ -109,7 +109,13 @@ public class Matrimony_View_Details extends AppCompatActivity {
             startActivity(i1);
             finish();
         }
+        if (id==R.id.about)
+        {
 
+            Intent i1 = new Intent(Matrimony_View_Details.this, About.class);
+            startActivity(i1);
+
+        }
         return super.onOptionsItemSelected(item);
     }
 }

@@ -211,7 +211,13 @@ public class Business_Image_Edit extends AppCompatActivity {
             startActivity(i1);
             finish();
         }
+        if (id==R.id.about)
+        {
 
+            Intent i1 = new Intent(Business_Image_Edit.this, About.class);
+            startActivity(i1);
+
+        }
         return super.onOptionsItemSelected(item);
     }
     @Override

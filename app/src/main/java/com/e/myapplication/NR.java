@@ -398,6 +398,13 @@ public class NR extends AppCompatActivity {
             startActivity(i1);
             finish();
         }
+        if (id==R.id.about)
+        {
+
+            Intent i1 = new Intent(NR.this, About.class);
+            startActivity(i1);
+
+        }
         return super.onOptionsItemSelected(item);
     }
 

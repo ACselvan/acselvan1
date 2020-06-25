@@ -230,6 +230,13 @@ query.addValueEventListener(new ValueEventListener() {
             startActivity(i1);
             finish();
         }
+        if (id==R.id.about)
+        {
+
+            Intent i1 = new Intent(Business_info.this, About.class);
+            startActivity(i1);
+
+        }
         if (toggle.onOptionsItemSelected(item))
         {
             return true;

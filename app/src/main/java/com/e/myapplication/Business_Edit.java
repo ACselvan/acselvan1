@@ -202,6 +202,13 @@ TextView mobile;
             startActivity(i1);
             finish();
         }
+        if (id==R.id.about)
+        {
+
+            Intent i1 = new Intent(Business_Edit.this, About.class);
+            startActivity(i1);
+
+        }
         return super.onOptionsItemSelected(item);
     }
     @Override

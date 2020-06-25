@@ -150,6 +150,13 @@ private void check()
             startActivity(i1);
             finish();
         }
+        if (id==R.id.about)
+        {
+
+            Intent i1 = new Intent(Business_Favourites.this, About.class);
+            startActivity(i1);
+
+        }
         if (toggle.onOptionsItemSelected(item))
         {
             return true;

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Matrimony_info_demo"></activity>
+        <activity android:name=".About"></activity>
+        <activity android:name=".Matrimony_info_demo" />
         <activity android:name=".Job_existing" />
         <activity android:name=".Matrimony_View_Details" />
         <activity android:name=".Matrimony_Image_Edit" />
@@ -45,7 +46,8 @@
         <activity android:name=".Job_Portal" />
         <activity android:name=".Matrimony" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -309,6 +309,13 @@ private void slide2()
             startActivity(i1);
             finish();
         }
+        if (id==R.id.about)
+        {
+
+            Intent i1 = new Intent(Main2Activity.this, About.class);
+            startActivity(i1);
+
+        }
         return super.onOptionsItemSelected(item);
     }
     @Override

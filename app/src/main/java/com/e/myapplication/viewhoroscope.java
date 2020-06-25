@@ -62,7 +62,13 @@ TextView t;
             startActivity(i1);
             finish();
         }
+        if (id==R.id.about)
+        {
 
+            Intent i1 = new Intent(viewhoroscope.this, About.class);
+            startActivity(i1);
+
+        }
         return super.onOptionsItemSelected(item);
     }
 }

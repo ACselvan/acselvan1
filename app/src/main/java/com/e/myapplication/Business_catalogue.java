@@ -228,6 +228,13 @@ List<String> CategoryList = new ArrayList<>();
             startActivity(i1);
             finish();
         }
+        if (id==R.id.about)
+        {
+
+            Intent i1 = new Intent(Business_catalogue.this, About.class);
+            startActivity(i1);
+
+        }
         return super.onOptionsItemSelected(item);
     }
     @Override

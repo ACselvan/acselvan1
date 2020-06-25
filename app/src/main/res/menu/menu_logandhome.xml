@@ -7,6 +7,11 @@
         app:showAsAction="always"
         android:title="home"/>
     <item
+        android:id="@+id/about"
+        android:icon="@drawable/about"
+        app:showAsAction="always"
+        android:title="about"/>
+    <item
         android:id="@+id/logout"
         android:icon="@drawable/logout"
         app:showAsAction="always"
