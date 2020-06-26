@@ -50,9 +50,6 @@ public class Matrimony_View_Details extends AppCompatActivity {
         education=findViewById(R.id.drawer_education_matrimony_details);
         height=findViewById(R.id.drawer_height_matrimony_details);
         city=findViewById(R.id.drawer_city_view_details);
-        status_edit=findViewById(R.id.viewdetails_status_matrimony);
-        children=findViewById(R.id.viewdetails_children);
-        noofchildren=findViewById(R.id.viewdetails_children_matrimony);
 
         getSupportActionBar().setTitle("Details");
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
@@ -77,18 +74,7 @@ public class Matrimony_View_Details extends AppCompatActivity {
                     job.setText(up.getJob());
                     height.setText(up.getHeight());
                     city.setText(up.getCity());
-                    status_edit.setText(up.getStatus());
-                    if (up.getStatus().equals("Married"))
-                    {
-                        children.setVisibility(View.VISIBLE);
-                        noofchildren.setVisibility(View.VISIBLE);
-                        noofchildren.setText(up.getChildren());
-                    }
-                    else if (up.getStatus().equals("UnMarried"))
-                    {
-                        children.setVisibility(View.INVISIBLE);
-                        noofchildren.setVisibility(View.INVISIBLE);
-                    }
+
                 }
             }
 

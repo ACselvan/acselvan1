@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,8 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Matrimony_Edit extends AppCompatActivity {
-private EditText name,age,height,comapny,income,education,job,fathername,mothername,siblings;
-private     TextView cellno,sex;
+private EditText name,age,height,comapny,income,education,job,fathername,mothername,siblings,noofchildren;
+private     TextView cellno,sex,status,children;
    private RadioGroup radioGroup;
     private RadioButton radioButton;
     Button submit;
@@ -41,11 +42,12 @@ private     TextView cellno,sex;
     DatabaseReference Business_details;
     Query query;
     private up1 up;
+    List<String> names = new ArrayList<>();
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
     DatabaseReference businessCategoryTable;
     List<String> CategoryList = new ArrayList<>();
-    private Spinner spinner;
+    private Spinner spinner,status_edit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +60,7 @@ private     TextView cellno,sex;
         education=(EditText)findViewById(R.id.education_matrimony_edit);
         job=(EditText)findViewById(R.id.Job_matrimony_edit);
         cellno=(TextView)findViewById(R.id.cellno_edit);
+
         mothername=(EditText)findViewById(R.id.Mn_matrimony_edit);
         siblings=(EditText)findViewById(R.id.sbl_matrimony_edit);
         fathername=(EditText)findViewById(R.id.Fn_matrimony_edit);
@@ -65,6 +68,7 @@ private     TextView cellno,sex;
         submit=(Button)findViewById(R.id.submit_matrimony_edit);
         sex=(TextView)findViewById(R.id.sex_edit);
         spinner=findViewById(R.id.spinner_matrimonyedit);
+
         getSupportActionBar().setTitle("Wdit Matrimony Profile");
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("city_business");
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
@@ -234,4 +238,6 @@ private     TextView cellno,sex;
         }
 
     }
+
+
 }

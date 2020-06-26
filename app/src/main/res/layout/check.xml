@@ -81,24 +81,7 @@
 
                     android:textColor="#000000"
                     android:textSize="20sp" />
-                <TextView
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="Status:"
-
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/drawer_children"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="Children:"
-
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_marginTop="10dp"
@@ -144,24 +127,7 @@
 
                     android:textColor="#000000"
                     android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/drawer_status_matrimony"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="status"
 
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/drawer_children_matrimony"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="status"
-
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
         <TextView
