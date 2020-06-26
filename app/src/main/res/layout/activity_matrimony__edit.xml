@@ -18,19 +18,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColor="#000000"
+            android:layout_gravity="center_horizontal"
             android:inputType="textPersonName"
             android:text="BRIDE/GROOM DETAILS" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/t2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:text="Name" />
 
 
@@ -38,7 +41,9 @@
                 android:id="@+id/Name_matrimony_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:inputType="textPersonName"
 
                 />
@@ -60,7 +65,8 @@
                 android:id="@+id/T3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:text="Age" />
 
             <EditText
@@ -68,6 +74,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                  />
         </LinearLayout>
 
@@ -82,13 +91,18 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sex" />
+                android:text="Sex"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"/>
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:id="@+id/radioGroup_matrimony_edit">
+                android:id="@+id/radioGroup_matrimony_edit"
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp">
 
                 <RadioButton
                     android:id="@+id/Male_matrimony_edit"
@@ -106,6 +120,8 @@
                     android:text="Female" />
             </RadioGroup>
             <TextView
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/sex_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -124,14 +140,18 @@
                 android:id="@+id/t5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Height" />
+                android:text="Height"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"/>
 
 
             <EditText
                 android:id="@+id/Height_matrimony_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:ems="10"
                 android:inputType="number" />
 
@@ -149,7 +169,8 @@
                 android:id="@+id/T99"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:text="Company" />
 
             <EditText
@@ -157,6 +178,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                  />
         </LinearLayout>
         <LinearLayout
@@ -168,14 +192,18 @@
                 android:id="@+id/t"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Income" />
+                android:text="Income"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"/>
 
             <EditText
                 android:id="@+id/Income_matrimony_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:ems="10" />
 
 
@@ -191,14 +219,17 @@
                 android:id="@+id/t7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:text="Education" />
 
             <EditText
                 android:id="@+id/education_matrimony_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:ems="10"
                 android:inputType="textPersonName" />
         </LinearLayout>
@@ -215,13 +246,17 @@
                 android:id="@+id/t9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Job" />
+                android:text="Job"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"/>
 
             <EditText
                 android:id="@+id/Job_matrimony_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                  />
@@ -240,13 +275,17 @@
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Father's name" />
+                android:text="Father's name"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"/>
 
             <EditText
                 android:id="@+id/Fn_matrimony_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:ems="10"
                 android:inputType="textPersonName" />
         </LinearLayout>
@@ -261,14 +300,18 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mother's name" />
+                android:text="Mother's name"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"/>
 
 
             <EditText
                 android:id="@+id/Mn_matrimony_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
 
                 android:ems="10" />
 
@@ -284,7 +327,8 @@
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"
                 android:text="Siblings" />
 
 
@@ -294,7 +338,10 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:maxLength="2"
-                android:inputType="number" />
+                android:inputType="number"
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"/>
 
         </LinearLayout>
 
@@ -308,7 +355,9 @@
                 android:id="@+id/cellno_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="cell no" />
+                android:text="cell no"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"/>
 
 
 
@@ -317,13 +366,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="city"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp">
             <Spinner
                 android:id="@+id/spinner_matrimonyedit"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                />
         </LinearLayout>
 
-
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

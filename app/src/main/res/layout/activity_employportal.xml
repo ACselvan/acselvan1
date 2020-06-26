@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fbf7ea"
-    android:orientation="vertical"
+    android:scrollbars="vertical"
     tools:context=".Employportal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,13 +46,18 @@
         android:id="@+id/t2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name of the company/Office" />
+        android:text="Name of the company/Office"
+        android:textColor="#000000"
+        android:layout_marginLeft="10dp"/>
         <EditText
             android:id="@+id/q1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:background="@drawable/border1"
+            android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
              />
     </LinearLayout>
     <LinearLayout
@@ -60,14 +69,19 @@
         android:id="@+id/t3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Qualification Required" />
+        android:text="Qualification Required"
+        android:textColor="#000000"
+        android:layout_marginLeft="10dp"/>
 
         <EditText
             android:id="@+id/q2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:background="@drawable/border1"
+            android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
              />
     </LinearLayout>
     <LinearLayout
@@ -79,15 +93,20 @@
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address" />
+        android:text="Address"
+        android:textColor="#000000"
+        android:layout_marginLeft="10dp"/>
 
 
         <EditText
             android:id="@+id/q3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:background="@drawable/border1"
+            android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
              />
 
     </LinearLayout>
@@ -100,12 +119,23 @@
                 android:id="@+id/city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="City" />
-
+                android:text="City"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border1"
+                android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp">
             <Spinner
                 android:id="@+id/spinner_job"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+
+                />
+        </LinearLayout>
         </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -116,13 +146,19 @@
         android:id="@+id/t7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No of Candidates required" />
+        android:text="No of Candidates required"
+        android:textColor="#000000"
+        android:layout_marginLeft="10dp"
+        />
         <EditText
             android:id="@+id/q5"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
+            android:background="@drawable/border1"
+            android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
              />
     </LinearLayout>
     <LinearLayout
@@ -134,13 +170,18 @@
         android:id="@+id/t1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Employer Details" />
+        android:text="Employer Details"
+        android:textColor="#000000"
+        android:layout_marginLeft="10dp"/>
         <EditText
             android:id="@+id/q4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:background="@drawable/border1"
+            android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
             />
     </LinearLayout>
 
@@ -254,5 +295,5 @@
         >
     </LinearLayout>
 
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
