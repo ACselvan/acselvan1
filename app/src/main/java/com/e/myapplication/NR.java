@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,7 +46,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NR extends AppCompatActivity {
+public class NR extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final int PICK_IMAGE_REQUEST = 7;
     private static final int PICK_IMAGE_REQUESTT = 7;
     private SharedPreferences.Editor editor;
@@ -59,8 +60,9 @@ public class NR extends AppCompatActivity {
     private StorageReference st,stt;
     private DatabaseReference db;
     String r;
-    private String Tag;
-    EditText Name, Age, Height, Income, education, Job, Fn, Mn, sbl, t10,company;
+    private String Tag,no_of_children,status_string;
+    private TextView children;
+    EditText Name, Age, Height, Income, education, Job, Fn, Mn, sbl, t10,company,noofchildren;
     Button button4, uploadimage, uploadHoroscope;
     DatabaseReference Matrimony_details;
     RadioGroup radioGroup;
@@ -69,7 +71,8 @@ public class NR extends AppCompatActivity {
     String Namee, Agee, Sexx, Heightt, Incomee, educationn, Jobb, Fnn, Mnn, sbll, t100,companyy,HoroscopeImage=null,profileImage=null,phonenumber,city="";
     DatabaseReference businessCategoryTable;
     List<String> CategoryList = new ArrayList<>();
-    private Spinner spinner;
+    List<String> names = new ArrayList<>();
+    private Spinner spinner,status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,11 +103,17 @@ public class NR extends AppCompatActivity {
         iv = findViewById(R.id.iv);
         pb1 = findViewById(R.id.pb1);
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("city_business");
+        status=findViewById(R.id.spinner_maritalstatus_matrimony);
 
 
-
+        names.add("UnMarried");
+        names.add("Married");
+        ArrayAdapter adapter1 = new ArrayAdapter<>(NR.this,android.R.layout.simple_list_item_1,names);
+        status.setAdapter(adapter1);
+        status.setOnItemSelectedListener(this);
         stt = FirebaseStorage.getInstance().getReference("Uploads/profilephoto");
-
+        children=findViewById(R.id.nochildren);
+        noofchildren=findViewById(R.id.no_of_children);
         st = FirebaseStorage.getInstance().getReference("Uploads/Horoscope");
       //  db= FirebaseDatabase.getInstance().getReference("Uploads/");
 
@@ -152,9 +161,7 @@ public class NR extends AppCompatActivity {
 
             }
         });
-
-
-
+        
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,6 +173,8 @@ public class NR extends AppCompatActivity {
                 }
                 else
                 {
+                    status_string=status.getSelectedItem().toString();
+                    no_of_children=noofchildren.getText().toString();
                     Sexx = GenderButton.getText().toString();
                     Namee =Name.getText().toString().trim();
                     Agee = Age.getText().toString().trim();
@@ -184,12 +193,12 @@ public class NR extends AppCompatActivity {
                             {
                                 profileImage="https://firebasestorage.googleapis.com/v0/b/saivities.appspot.com/o/Uploads%2Fempty%20image%2FImages-icon.png?alt=media&token=01bd9557-6a40-441c-bee0-5f3bd40d5f7b";
                             }
-                        if((HoroscopeImage!=null)&&!Namee.equals("")&&!Sexx.equals("")&&!Heightt.equals("")&&!Incomee.equals("")&&!educationn.equals("")&&!Jobb.equals("")&&!Mnn.equals("")&&!Fnn.equals("")&&!sbll.equals("")&&!companyy.equals("")&&!Agee.equals("")&&!city.equals("")) {
+                        if((HoroscopeImage!=null)&&!Namee.equals("")&&!Sexx.equals("")&&!Heightt.equals("")&&!Incomee.equals("")&&!educationn.equals("")&&!Jobb.equals("")&&!Mnn.equals("")&&!Fnn.equals("")&&!sbll.equals("")&&!companyy.equals("")&&!Agee.equals("")&&!city.equals("")&&!no_of_children.equals("")) {
 
                             String idd = Matrimony_details.push().getKey();
                             //  String imageurl = uri.toString();
 
-                            up1 Image = new up1(Namee, Agee, Sexx, Heightt, Incomee, educationn, Jobb, educationn, Mnn, Fnn, sbll, phonenumber, companyy, HoroscopeImage, profileImage, Matrimony_details,city);
+                            up1 Image = new up1(Namee, Agee, Sexx, Heightt, Incomee, educationn, Jobb, educationn, Mnn, Fnn, sbll, phonenumber, companyy, HoroscopeImage, profileImage, Matrimony_details,city,status_string,no_of_children);
                             Matrimony_details.child(idd).setValue(Image);
                             HoroscopeImage=null;
                             profileImage=null;
@@ -424,4 +433,24 @@ public class NR extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String item=adapterView.getItemAtPosition(i).toString();
+        if (item.equals("Married"))
+        {
+            children.setVisibility(View.VISIBLE);
+            noofchildren.setVisibility(View.VISIBLE);
+        }
+        else if (item.equals("UnMarried"))
+        {
+            children.setVisibility(View.INVISIBLE);
+            noofchildren.setVisibility(View.INVISIBLE);
+            noofchildren.setText("0");
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 }

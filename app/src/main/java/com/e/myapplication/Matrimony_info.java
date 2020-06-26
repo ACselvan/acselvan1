@@ -43,7 +43,7 @@ import java.util.TimerTask;
 
 public class Matrimony_info extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button matrimony_favourites,editprofile,editimage;
-    private TextView name,fathername,mothername,cellno,sex,age,siblings,income,job,education,height,city;
+    private TextView name,fathername,mothername,cellno,sex,age,siblings,income,job,education,height,city,status_edit,children,noofchildren;
     private Query query,query1,query2;
     private ImageView profilimage;
     private String imageurl;
@@ -102,6 +102,9 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         education=(TextView)drawerLayout.findViewById(R.id.drawer_education_matrimony);
         height=(TextView)drawerLayout.findViewById(R.id.drawer_height_matrimony);
         city=(TextView)drawerLayout.findViewById(R.id.drawer_city_matrimony);
+        children=(TextView)drawerLayout.findViewById(R.id.drawer_children);
+        status_edit=(TextView)drawerLayout.findViewById(R.id.drawer_status_matrimony);
+        noofchildren=(TextView)drawerLayout.findViewById(R.id.drawer_children_matrimony);
         profilimage=(ImageView) drawerLayout.findViewById(R.id.profileimage_drawer_matrimony);
         getSupportActionBar().setTitle("Matrimony List");
         toggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
@@ -127,6 +130,9 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         city=(TextView)v1.findViewById(R.id.drawer_city_matrimony);
         profilimage=(ImageView) v1.findViewById(R.id.profileimage_drawer_matrimony);
         editimage=(Button)v1.findViewById(R.id.matrimony_editimage);
+        children=(TextView)v1.findViewById(R.id.drawer_children);
+        status_edit=(TextView)v1.findViewById(R.id.drawer_status_matrimony);
+        noofchildren=(TextView)v1.findViewById(R.id.drawer_children_matrimony);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         query1=databaseReference.orderByChild("cellno").equalTo(phonenumber);
         list=new ArrayList<>();
@@ -250,6 +256,19 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
                         job.setText(up.getJob());
                         height.setText(up.getHeight());
                         city.setText(up.getCity());
+                        status_edit.setText(up.getStatus());
+                        if (up.getStatus().equals("Married"))
+                        {
+                            children.setVisibility(View.VISIBLE);
+                            noofchildren.setVisibility(View.VISIBLE);
+                            noofchildren.setText(up.getChildren());
+                        }
+                        else if (up.getStatus().equals("UnMarried"))
+                        {
+                            children.setVisibility(View.INVISIBLE);
+                            noofchildren.setVisibility(View.INVISIBLE);
+
+                        }
                     }
                 }
 

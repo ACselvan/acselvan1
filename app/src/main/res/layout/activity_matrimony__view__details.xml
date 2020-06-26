@@ -30,13 +30,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/border"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             >
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="20dp"
+
                 android:layout_gravity="end"
                 >
                 <TextView
@@ -75,13 +78,31 @@
 
                     android:textColor="#000000"
                     android:textSize="20sp" />
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="Status:"
+
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/viewdetails_children"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="Children:"
+
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="66dp"
                 android:layout_gravity="end"
                 >
                 <TextView
@@ -120,6 +141,24 @@
 
                     android:textColor="#000000"
                     android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/viewdetails_status_matrimony"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="status"
+
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/viewdetails_children_matrimony"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="children"
+
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
         <TextView
@@ -134,14 +173,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/border"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="20dp"
+
                 android:layout_gravity="end"
+
                 >
                 <TextView
 
@@ -176,7 +219,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="55dp"
                 android:layout_gravity="end"
                 >
                 <TextView
@@ -220,14 +263,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/border"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="20dp"
+
                 android:layout_gravity="end"
+
                 >
                 <TextView
 
@@ -261,7 +308,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_gravity="end"
                 >
                 <TextView
@@ -300,17 +347,22 @@
             android:text="Contact Details"
             android:textColor="#000000"
             android:textSize="25sp"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+          />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/border"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp">
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="20dp"
+
                 android:layout_gravity="end"
                 >
                 <TextView
@@ -337,7 +389,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="55dp"
                 android:layout_gravity="end"
                 >
                 <TextView

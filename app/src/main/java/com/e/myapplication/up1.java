@@ -7,7 +7,7 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.jar.Attributes;
 
 class up1 {
-    String Name, Age, Sex, Height, Income, Education, Fathersname, Mothersname, Siblings, cellno,job,companyy,imageurl,profileImage,city;
+    String Name, Age, Sex, Height, Income, Education, Fathersname, Mothersname, Siblings, cellno,job,companyy,imageurl,profileImage,city,status,children;
     DatabaseReference dref;
 
     public up1(String name) {
@@ -17,7 +17,7 @@ class up1 {
 
     public up1() {
     }
-    public up1(String namee, String agee, String sexx, String heightt, String incomee, String educationn, String jobb, String educationn1, String mnn, String fnn, String sbll, String t100, String companyy, String imageurl, String profileImage, DatabaseReference matrimony_details,String city) {
+    public up1(String namee, String agee, String sexx, String heightt, String incomee, String educationn, String jobb, String educationn1, String mnn, String fnn, String sbll, String t100, String companyy, String imageurl, String profileImage, DatabaseReference matrimony_details,String city,String status,String children) {
         this.Name = namee;
         this.Sex = sexx;
         this.Age = agee;
@@ -34,6 +34,24 @@ class up1 {
         this.profileImage=profileImage;
         this.dref=matrimony_details;
         this.city=city;
+        this.status=status;
+        this.children=children;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getChildren() {
+        return children;
+    }
+
+    public void setChildren(String children) {
+        this.children = children;
     }
 
     public String getCity() {
