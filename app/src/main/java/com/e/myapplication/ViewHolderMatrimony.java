@@ -62,7 +62,7 @@ public class ViewHolderMatrimony extends RecyclerView.Adapter<ViewHolderMatrimon
         holder.job.setText(up.get(position).getJob());
         holder.company.setText(up.get(position).getCompanyy());
         holder.income.setText(up.get(position).getIncome());
-        holder.phonenumber.setText(up.get(position).getCellno());
+
         holder.left_anime.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_transition_animetion));
         holder.right_anime.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
         Picasso.with(context).load(up.get(position).getProfileImage()).into(holder.iv);
@@ -71,6 +71,7 @@ public class ViewHolderMatrimony extends RecyclerView.Adapter<ViewHolderMatrimon
             public void onClick(View view) {
                 Intent i1=new Intent(context,viewhoroscope.class);
                 i1.putExtra("image",up.get(position).getImageurl());
+
                 context.startActivity(i1);
             }
         });
@@ -179,7 +180,7 @@ holder.view_details.setOnClickListener(new View.OnClickListener() {
     }
 
     class myViewHolder extends RecyclerView.ViewHolder {
-        TextView name,job,company,income,phonenumber;
+        TextView name,job,company,income;
         ImageView iv;
         Button viewhoroscope,favourite,view_details;
         LinearLayout left_anime,right_anime;
@@ -189,7 +190,7 @@ holder.view_details.setOnClickListener(new View.OnClickListener() {
             job=(TextView)itemView.findViewById(R.id.job);
             company=(TextView)itemView.findViewById(R.id.company);
             income=(TextView)itemView.findViewById(R.id.income);
-            phonenumber=(TextView)itemView.findViewById(R.id.phone);
+
             iv=(ImageView)itemView.findViewById(R.id.iv);
             viewhoroscope=(Button)itemView.findViewById(R.id.view_horoscope);
             favourite=(Button)itemView.findViewById(R.id.fav);

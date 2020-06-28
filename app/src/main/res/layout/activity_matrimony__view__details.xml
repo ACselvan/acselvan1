@@ -16,115 +16,127 @@
         android:layout_height="300dp"
         android:layout_gravity="center"
         android:id="@+id/profileimage_drawer_matrimony_details"/>
-        <TextView
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Profile"
-            android:textColor="#000000"
-            android:textSize="25sp"
-             />
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/border"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            >
-            <LinearLayout
-                android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-
-                android:layout_gravity="end"
-                >
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="Name:"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    android:gravity="start" />
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="Age:"
-                    android:layout_gravity="start"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="Sex:"
-
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="Height:"
-
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
+                android:layout_gravity="center"
+                android:text="Profile"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                />
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="66dp"
-                android:layout_gravity="end"
-                >
-                <TextView
-                    android:id="@+id/drawer_name_matrimony"
-                    android:layout_width="wrap_content"
+                android:background="@drawable/border"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="name"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    android:gravity="center_horizontal" />
-                <TextView
-                    android:id="@+id/drawer_age_matrimony_details"
-                    android:layout_width="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text="Name:"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:gravity="start" />
+                    <TextView
+                        android:id="@+id/drawer_firmname_business"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="name"
+                        android:textSize="20dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="88dp"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="5dp"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="age"
+                    android:orientation="horizontal">
+                    <TextView
 
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/drawer_sex_matrimony_details"
-                    android:layout_width="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="propretor name:"
+                        android:layout_gravity="start"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/drawer_proprietorname_business"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="propretor name"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#000000"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="20dp"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="sex"
+                    android:orientation="horizontal">
+                    <TextView
 
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/drawer_height_matrimony_details"
-                    android:layout_width="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text="Sex:"
+
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/drawer_sex_matrimony_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text="sex"
+                        android:layout_marginLeft="110dp"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="height"
+                    android:orientation="horizontal">
+                    <TextView
 
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text="Height:"
 
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/drawer_height_matrimony_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text="height"
+                        android:layout_marginLeft="84dp"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
         <TextView
@@ -139,19 +151,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:background="@drawable/border"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-
-                android:layout_gravity="end"
-
-                >
+                android:orientation="horizontal">
                 <TextView
 
                     android:layout_width="wrap_content"
@@ -162,6 +169,20 @@
                     android:textColor="#000000"
                     android:textSize="20sp" />
                 <TextView
+                    android:id="@+id/drawer_education_matrimony_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="education"
+                    android:layout_marginLeft="52dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -171,38 +192,25 @@
                     android:textColor="#000000"
                     android:textSize="20sp" />
                 <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="Income:"
-
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="55dp"
-                android:layout_gravity="end"
-                >
-                <TextView
-                    android:id="@+id/drawer_education_matrimony_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="education"
-
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-                <TextView
                     android:id="@+id/drawer_job_matrimony_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="job"
+                    android:layout_marginLeft="110dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="Income:"
 
                     android:textColor="#000000"
                     android:textSize="20sp" />
@@ -212,10 +220,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="income"
-
+                    android:layout_marginLeft="78dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
+
         </LinearLayout>
         <TextView
 
@@ -229,28 +238,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:background="@drawable/border"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-
-                android:layout_gravity="end"
-
-                >
+                android:orientation="horizontal">
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:text="Father's Name"
+                    android:text="Father's Name:"
 
                     android:textColor="#000000"
                     android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/drawer_fathername_matrimony_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="father name"
+                    android:layout_marginLeft="12dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <TextView
 
                     android:layout_width="wrap_content"
@@ -261,38 +279,25 @@
                     android:textColor="#000000"
                     android:textSize="20sp" />
                 <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="Siblings:"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="end"
-                >
-                <TextView
-                    android:id="@+id/drawer_fathername_matrimony_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="father name"
-
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-                <TextView
                     android:id="@+id/drawer_mothernamename_matrimony_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="mother name"
                     android:layout_gravity="start"
+                    android:layout_marginLeft="7dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="Siblings:"
                     android:textColor="#000000"
                     android:textSize="20sp" />
                 <TextView
@@ -301,9 +306,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="siblings"
+                    android:layout_marginLeft="72dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
+
         </LinearLayout>
         <TextView
 
@@ -314,23 +321,18 @@
             android:textColor="#000000"
             android:textSize="25sp"
             android:gravity="center_horizontal"
-          />
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:background="@drawable/border"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginRight="10dp">
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-
-                android:layout_gravity="end"
-                >
+                android:orientation="horizontal">
                 <TextView
 
                     android:layout_width="wrap_content"
@@ -341,29 +343,25 @@
                     android:textColor="#000000"
                     android:textSize="20sp" />
                 <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="City:"
-
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="55dp"
-                android:layout_gravity="end"
-                >
-                <TextView
                     android:id="@+id/drawer_cellno_matrimony_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="Mobile number"
+                    android:layout_marginLeft="55dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="City:"
 
                     android:textColor="#000000"
                     android:textSize="20sp" />
@@ -373,10 +371,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="city"
-
+                    android:layout_marginLeft="113dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

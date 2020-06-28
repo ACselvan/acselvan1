@@ -91,8 +91,7 @@ Button date,next;
         query2 = databaseReference.orderByChild("cellno").equalTo(a1);
         //    date=(Button)findViewById(R.id.date);
         slide();
-        slide1();
-        slide2();
+
 
         //check();
         /*signout.setOnClickListener(new View.OnClickListener() {
@@ -237,8 +236,8 @@ private void slide()
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
                 up = dataSnapshot1.getValue(images.class);
-
-
+                Picasso.with(getApplicationContext()).load(up.getImage2()).into(job_image);
+                Picasso.with(getApplicationContext()).load(up.getImage1()).into(matrimony_image);
                 Picasso.with(getApplicationContext()).load(up.getImage()).into(Business_image);
             }
 
@@ -250,6 +249,7 @@ private void slide()
         }
     });
 }
+/*
 private void slide1()
 {
     FirebaseDatabase.getInstance().getReference("homepage_images").addValueEventListener(new ValueEventListener() {
@@ -258,7 +258,7 @@ private void slide1()
             for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
                 up = dataSnapshot1.getValue(images.class);
 
-                Picasso.with(getApplicationContext()).load(up.getImage1()).into(matrimony_image);
+
             }
 
         }
@@ -276,7 +276,7 @@ private void slide2()
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
                 up = dataSnapshot1.getValue(images.class);
-                Picasso.with(getApplicationContext()).load(up.getImage2()).into(job_image);
+
             }
 
         }
@@ -286,7 +286,7 @@ private void slide2()
 
         }
     });
-}
+}*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

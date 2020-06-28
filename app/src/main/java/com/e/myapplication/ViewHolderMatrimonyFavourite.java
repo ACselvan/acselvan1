@@ -40,7 +40,7 @@ public class ViewHolderMatrimonyFavourite extends RecyclerView.Adapter<ViewHolde
     @NonNull
     @Override
     public ViewHolderMatrimonyFavourite.myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolderMatrimonyFavourite.myViewHolder(LayoutInflater.from(context).inflate(R.layout.matrimony_item,parent,false));
+        return new ViewHolderMatrimonyFavourite.myViewHolder(LayoutInflater.from(context).inflate(R.layout.matrimony_item_demo,parent,false));
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ViewHolderMatrimonyFavourite extends RecyclerView.Adapter<ViewHolde
         holder.job.setText(up.get(position).getJob());
         holder.company.setText(up.get(position).getCompanyy());
         holder.income.setText(up.get(position).getIncome());
-        holder.phonenumber.setText(up.get(position).getCellno());
+
         Picasso.with(context).load(up.get(position).getProfileImage()).into(holder.iv);
         holder.viewhoroscope.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +75,7 @@ public class ViewHolderMatrimonyFavourite extends RecyclerView.Adapter<ViewHolde
                     holder.job.setVisibility(View.INVISIBLE);
                     holder.company.setVisibility(View.INVISIBLE);
                     holder.income.setVisibility(View.INVISIBLE);
-                    holder.phonenumber.setVisibility(View.INVISIBLE);
+
                     holder.iv.setVisibility(View.INVISIBLE);
                     holder.viewhoroscope.setVisibility(View.INVISIBLE);
                     holder.favourite.setVisibility(View.INVISIBLE);
@@ -181,7 +181,7 @@ holder.view_details.setOnClickListener(new View.OnClickListener() {
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        TextView name,job,company,income,phonenumber;
+        TextView name,job,company,income;
         ImageView iv;
         Button viewhoroscope,favourite,view_details;
         public myViewHolder(@NonNull View itemView) {
@@ -190,7 +190,7 @@ holder.view_details.setOnClickListener(new View.OnClickListener() {
             job=(TextView)itemView.findViewById(R.id.job);
             company=(TextView)itemView.findViewById(R.id.company);
             income=(TextView)itemView.findViewById(R.id.income);
-            phonenumber=(TextView)itemView.findViewById(R.id.phone);
+
             iv=(ImageView)itemView.findViewById(R.id.iv);
             viewhoroscope=(Button)itemView.findViewById(R.id.view_horoscope);
             favourite=(Button)itemView.findViewById(R.id.fav);

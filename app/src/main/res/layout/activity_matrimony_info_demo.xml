@@ -11,42 +11,352 @@
        android:layout_height="wrap_content"
        android:orientation="vertical">
 
+       <TextView
+
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:text="Profile"
+           android:textColor="#000000"
+           android:textSize="25sp"
+           />
        <LinearLayout
            android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:orientation="horizontal">
-           <ImageView
-
-               android:layout_width="60dp"
-               android:layout_height="60dp"
-
-               android:layout_weight="1"
-               app:srcCompat="@drawable/exclamatory" />
-           <TextView
-
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-
-               android:text="Important Note"
-               android:textColor="#000000" />
-           <ImageView
-
-               android:layout_width="60dp"
-               android:layout_height="60dp"
-
-               android:layout_weight="1"
-               app:srcCompat="@drawable/exclamatory" />
-       </LinearLayout>
-       <TextView
-           android:id="@+id/textView3"
-           android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:gravity="center"
-           android:layout_weight="1"
-           android:textColor="#000000"
-           android:text="The Phone Number Your going to give will be your default contact number this can't be changed" />
+           android:orientation="vertical"
+           android:background="@drawable/border"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <TextView
 
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="start"
+                   android:text="Name:"
+                   android:textColor="#000000"
+                   android:textSize="20sp"
+                   android:gravity="start" />
+               <TextView
+                   android:id="@+id/drawer_name_matrimony"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="start"
+                   android:text="name"
+                   android:textColor="#000000"
+                   android:textSize="20sp"
+                   android:gravity="center_horizontal" />
+           </LinearLayout>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <TextView
+
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+
+                   android:text="Age:"
+                   android:layout_gravity="start"
+                   android:textColor="#000000"
+                   android:textSize="20sp" />
+               <TextView
+                   android:id="@+id/drawer_age_matrimony_details"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="start"
+                   android:text="age"
+
+                   android:textColor="#000000"
+                   android:textSize="20sp" />
+           </LinearLayout>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <TextView
+
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="start"
+                   android:text="Sex:"
+
+                   android:textColor="#000000"
+                   android:textSize="20sp" />
+               <TextView
+                   android:id="@+id/drawer_sex_matrimony_details"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="start"
+                   android:text="sex"
+
+                   android:textColor="#000000"
+                   android:textSize="20sp" />
+           </LinearLayout>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <TextView
+
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="start"
+                   android:text="Height:"
+
+                   android:textColor="#000000"
+                   android:textSize="20sp" />
+
+               <TextView
+                   android:id="@+id/drawer_height_matrimony_details"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="start"
+                   android:text="height"
+
+                   android:textColor="#000000"
+                   android:textSize="20sp" />
+           </LinearLayout>
    </LinearLayout>
+   </LinearLayout>
+    <TextView
 
-    
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Career"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/border"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Education:"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/drawer_education_matrimony_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="education"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Job:"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/drawer_job_matrimony_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="job"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Income:"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/drawer_income_matrimony_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="income"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Family Information"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/border"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Father's Name:"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/drawer_fathername_matrimony_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="father name"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mother's Name:"
+                android:layout_gravity="start"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/drawer_mothernamename_matrimony_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mother name"
+                android:layout_gravity="start"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Siblings:"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/drawer_siblings_matrimony_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="siblings"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Contact Details"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/border"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Mobile No:"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/drawer_cellno_matrimony_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Mobile number"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="City:"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/drawer_city_view_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="city"
+
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>
