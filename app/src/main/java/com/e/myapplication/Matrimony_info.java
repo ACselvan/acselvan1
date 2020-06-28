@@ -35,7 +35,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.viewpagerindicator.CirclePageIndicator;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
@@ -85,6 +87,37 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         databaseReference1.keepSynced(true);
         databaseReference.keepSynced(true);
 
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        Date d = new Date();
+        String dayOfTheWeek = sdf.format(d);
+        if (dayOfTheWeek.equals("Sunday"))
+        {
+            query=databaseReference.orderByChild("name");
+        }
+        else if (dayOfTheWeek.equals("Monday"))
+        {
+            query=databaseReference.orderByChild("fathersname");
+        }
+        else if (dayOfTheWeek.equals("Tuesday"))
+        {
+            query=databaseReference.orderByChild("mothersname");
+        }
+        else if (dayOfTheWeek.equals("Wednesday"))
+        {
+            query=databaseReference.orderByChild("mothersname");
+        }
+        else if (dayOfTheWeek.equals("Thursday"))
+        {
+            query=databaseReference.orderByChild("job");
+        }
+        else if (dayOfTheWeek.equals("Friday"))
+        {
+            query=databaseReference.orderByChild("companyy");
+        }
+        else if (dayOfTheWeek.equals("Saturday"))
+        {
+            query=databaseReference.orderByChild("education");
+        }
         query2=databaseReference.orderByChild("cellno").equalTo(phonenumber);
         drawerLayout=(DrawerLayout)findViewById(R.id.matrimony_drawer);
         matrimony_favourites=(Button)drawerLayout.findViewById(R.id.matrimony_favourites);
@@ -159,8 +192,35 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         });
     }
 
-    private void check(String usersGender)
-    {query=databaseReference.orderByChild("sex").equalTo(usersGender);
+    private void check(final String usersGender)
+    {
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list.clear();
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+
+
+
+                    up = dataSnapshot1.getValue(up1.class);
+                    assert up != null;
+                    if (usersGender.equals(up.getSex())) {
+                    list.add(up);
+                     }
+
+                    // mProgressCircle.setVisibility(View.INVISIBLE);
+                }
+                adapter=new ViewHolderMatrimony(Matrimony_info.this,list,phonenumber);
+                recyclerView_matrimony.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+/*
+        query=databaseReference.orderByChild("sex").equalTo(usersGender);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -184,7 +244,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
     }
     private void check1()

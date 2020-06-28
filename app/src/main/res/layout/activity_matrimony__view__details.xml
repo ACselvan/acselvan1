@@ -54,16 +54,15 @@
                         android:textSize="20sp"
                         android:gravity="start" />
                     <TextView
-                        android:id="@+id/drawer_firmname_business"
+                        android:id="@+id/drawer_name_matrimony"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="name"
-                        android:textSize="20dp"
-                        android:textColor="#000000"
-                        android:layout_marginLeft="88dp"
                         android:layout_gravity="start"
-                        android:layout_marginTop="5dp"
-                        />
+                        android:text="name"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="93dp"
+                        android:gravity="center_horizontal" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,21 +73,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:text="propretor name:"
+                        android:text="Age:"
                         android:layout_gravity="start"
                         android:textColor="#000000"
                         android:textSize="20sp" />
                     <TextView
-                        android:id="@+id/drawer_proprietorname_business"
+                        android:id="@+id/drawer_age_matrimony_details"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="propretor name"
-                        android:layout_marginTop="5dp"
-                        android:textColor="#000000"
                         android:layout_gravity="start"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="20dp"
-                        />
+                        android:text="age"
+                        android:layout_marginLeft="113dp"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -109,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:text="sex"
-                        android:layout_marginLeft="110dp"
+                        android:layout_marginLeft="115dp"
                         android:textColor="#000000"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -133,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:text="height"
-                        android:layout_marginLeft="84dp"
+                        android:layout_marginLeft="90dp"
                         android:textColor="#000000"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -174,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="education"
-                    android:layout_marginLeft="52dp"
+                    android:layout_marginLeft="63dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -197,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="job"
-                    android:layout_marginLeft="110dp"
+                    android:layout_marginLeft="120dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -220,11 +217,33 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="income"
-                    android:layout_marginLeft="78dp"
+                    android:layout_marginLeft="90dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="Company:"
+
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/drawer_company_matrimony_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="company"
+                    android:layout_marginLeft="70dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
         </LinearLayout>
         <TextView
 
@@ -261,7 +280,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="father name"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="15dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -284,7 +303,7 @@
                     android:layout_height="wrap_content"
                     android:text="mother name"
                     android:layout_gravity="start"
-                    android:layout_marginLeft="7dp"
+                    android:layout_marginLeft="9dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -306,7 +325,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="siblings"
-                    android:layout_marginLeft="72dp"
+                    android:layout_marginLeft="75dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -348,7 +367,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="Mobile number"
-                    android:layout_marginLeft="55dp"
+                    android:layout_marginLeft="60dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -371,7 +390,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="city"
-                    android:layout_marginLeft="113dp"
+                    android:layout_marginLeft="120dp"
                     android:textColor="#000000"
                     android:textSize="20sp" />
             </LinearLayout>

@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class Matrimony_View_Details extends AppCompatActivity {
-    private TextView name,fathername,mothername,cellno,sex,age,siblings,income,job,education,height,city,children,noofchildren,status_edit;
+    private TextView name,fathername,mothername,cellno,sex,age,siblings,income,job,education,height,city,children,noofchildren,status_edit,company;
     private ImageView profilimage;
     private DatabaseReference databaseReference;
     private Query query2;
@@ -50,13 +50,13 @@ public class Matrimony_View_Details extends AppCompatActivity {
         education=findViewById(R.id.drawer_education_matrimony_details);
         height=findViewById(R.id.drawer_height_matrimony_details);
         city=findViewById(R.id.drawer_city_view_details);
-
+        company=findViewById(R.id.drawer_company_matrimony_details);
         getSupportActionBar().setTitle("Details");
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         databaseReference= FirebaseDatabase.getInstance().getReference("Matrimony_Details");
         query2=databaseReference.orderByChild("cellno").equalTo(phonenumber);
         editor = sharedPreferences.edit();
-        query2.addValueEventListener(new ValueEventListener() {
+        query2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
@@ -74,7 +74,7 @@ public class Matrimony_View_Details extends AppCompatActivity {
                     job.setText(up.getJob());
                     height.setText(up.getHeight());
                     city.setText(up.getCity());
-
+                    company.setText(up.getCompanyy());
                 }
             }
 

@@ -99,6 +99,7 @@ holder.view_details.setOnClickListener(new View.OnClickListener() {
     public void onClick(View view) {
         Intent i1=new Intent(context,Matrimony_View_Details.class);
         i1.putExtra("phonenumber",up.get(position).getCellno());
+
         context.startActivity(i1);
     }
 });
