@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -28,16 +29,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
 import com.viewpagerindicator.CirclePageIndicator;
 
+import org.json.JSONObject;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Business_catalogue extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class Business_catalogue extends AppCompatActivity implements AdapterView.OnItemClickListener, PaymentResultListener {
 ListView lv;
 Button addbusiness,b1;
 EditText e1;
@@ -109,7 +116,7 @@ List<String> CategoryList = new ArrayList<>();
                 sdf = new SimpleDateFormat("yyyyMMdd");
                 currentDateandTime = sdf.format(new Date());
 
-                query.addValueEventListener(new ValueEventListener() {
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
@@ -118,7 +125,8 @@ List<String> CategoryList = new ArrayList<>();
                             verify=user1.getBusss_exp();
                             //Toast.makeText(getApplicationContext(),user1.getMat_exp(),Toast.LENGTH_SHORT).show();
                             if (Integer.parseInt(currentDateandTime)<=Integer.parseInt(user1.busss_exp))
-                            {
+                            {success();
+                                /*
                                 FirebaseDatabase.getInstance().getReference("Business_Details").orderByChild("contact_number").equalTo(a1).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -139,7 +147,7 @@ List<String> CategoryList = new ArrayList<>();
                                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                                     }
-                                });
+                                });*/
                                 /*Intent i=new Intent(Business_catalogue.this,Getting_Business_details.class);
                                 startActivity(i);*/
                             }
@@ -151,7 +159,7 @@ List<String> CategoryList = new ArrayList<>();
                                 builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        Toast.makeText(getApplicationContext(),"it will leads to payment page",Toast.LENGTH_SHORT).show();
+                                        startPayment();
                                     }
                                 });
                                 builder.create().show();
@@ -164,7 +172,7 @@ List<String> CategoryList = new ArrayList<>();
                                 builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        Toast.makeText(getApplicationContext(),"it will leads to payment page",Toast.LENGTH_SHORT).show();
+                                       startPayment();
                                     }
                                 });
                                 builder.create().show();
@@ -250,5 +258,120 @@ List<String> CategoryList = new ArrayList<>();
 
         }
 
+    }
+    public void startPayment() {
+
+        /**
+         * Instantiate Checkout
+         */
+        Checkout checkout = new Checkout();
+
+        /**
+         * Set your logo here
+         */
+        checkout.setImage(R.drawable.technotribe);
+
+        /**
+         * Reference to current activity
+         */
+        final Activity activity = this;
+
+        /**
+         * Pass your payment options to the Razorpay Checkout as a JSONObject
+         */
+        try {
+            JSONObject options = new JSONObject();
+
+            /**
+             * Merchant Name
+             * eg: ACME Corp || HasGeek etc.
+             */
+            options.put("name", "Merchant Name");
+
+            /**
+             * Description can be anything
+             * eg: Reference No. #123123 - This order number is passed by you for your internal reference. This is not the `razorpay_order_id`.
+             *     Invoice Payment
+             *     etc.
+             */
+            options.put("description", "Reference No. #123456");
+            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+            // options.put("order_id", "order_9A33XWu170gUtm");
+            options.put("currency", "INR");
+
+            /**
+             * Amount is always passed in currency subunits
+             * Eg: "500" = INR 5.00
+             */
+            options.put("amount", "50000");
+
+            checkout.open(activity, options);
+        } catch(Exception e) {
+            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onPaymentSuccess(String s) {
+        sdf = new SimpleDateFormat("yyyy-MM-dd");
+        currentDateandTime = sdf.format(new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(sdf.parse(currentDateandTime));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        c.add(Calendar.DATE, 180);  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+        String output = sdf1.format(c.getTime());
+        exp(output);
+        success();
+    }
+
+    @Override
+    public void onPaymentError(int i, String s) {
+        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
+    }
+    private void exp(final String output)
+    {
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                {
+                    dataSnapshot1.getRef().child("busss_exp").setValue(output);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void success() {
+        FirebaseDatabase.getInstance().getReference("Business_Details").orderByChild("contact_number").equalTo(a1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getChildrenCount() == 0)
+                {
+                    Intent i=new Intent(Business_catalogue.this,Getting_Business_details.class);
+                    startActivity(i);
+
+                }else
+                {
+                    Intent i=new Intent(Business_catalogue.this,Business_Edit.class);
+                    startActivity(i);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
