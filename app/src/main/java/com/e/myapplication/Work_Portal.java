@@ -61,7 +61,7 @@ ImageView hire,work;
         editor=sharedPreferences.edit();
         getSupportActionBar().setTitle("Work Portal");
         hire=(ImageView)findViewById(R.id.work_hire);
-
+        Checkout.preload(getApplicationContext());
         work=(ImageView)findViewById(R.id.work_employee);
         hire.setOnClickListener(new View.OnClickListener() {
             @Override

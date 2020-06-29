@@ -75,7 +75,7 @@ List<String> CategoryList = new ArrayList<>();
         getSupportActionBar().setTitle("Business");
         addbusiness=findViewById(R.id.addbusiness);
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("Categories");
-
+        Checkout.preload(getApplicationContext());
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
