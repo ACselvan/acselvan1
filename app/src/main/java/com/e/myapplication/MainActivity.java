@@ -1,8 +1,11 @@
 package com.e.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Activity;
+import android.app.Notification;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements PaymentResultList
     private SimpleDateFormat sdf;
     private Button login;
     private ImageView imageView;
+    private NotificationManagerCompat notificationManagerCompat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,22 +39,11 @@ public class MainActivity extends AppCompatActivity implements PaymentResultList
         Checkout.preload(getApplicationContext());
         login=(Button)findViewById(R.id.main_login);
         imageView=findViewById(R.id.imageView);
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sdf = new SimpleDateFormat("yyyy-MM-dd");
-                currentDateandTime = sdf.format(new Date());
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                Calendar c = Calendar.getInstance();
-                try {
-                    c.setTime(sdf.parse(currentDateandTime));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                c.add(Calendar.DATE, 10);  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
-                SimpleDateFormat sdf1 = new SimpleDateFormat("dd MMM yyyy");
-                String output = sdf1.format(c.getTime());
-                Toast.makeText(getApplicationContext(),output,Toast.LENGTH_LONG).show();
+                matrimonynotification();
             }
         });
         login.setOnClickListener(new View.OnClickListener() {
@@ -120,5 +113,9 @@ public class MainActivity extends AppCompatActivity implements PaymentResultList
     @Override
     public void onPaymentError(int i, String s) {
         Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
+    }
+    private void matrimonynotification()
+    {
+
     }
 }

@@ -15,7 +15,9 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +37,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -42,12 +45,12 @@ public class Work_Portal extends AppCompatActivity implements PaymentResultListe
 ImageView hire,work;
     private  user user1;
     private Query query,query1;
-    private String currentDateandTime,a1,verify;
+    private String currentDateandTime,a1,verify,job;
     private SimpleDateFormat sdf;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
     DatabaseReference databaseReference,databaseReference1;
-
+    Date outputdate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +66,7 @@ ImageView hire,work;
         hire=(ImageView)findViewById(R.id.work_hire);
         Checkout.preload(getApplicationContext());
         work=(ImageView)findViewById(R.id.work_employee);
+        notification();
         hire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -308,6 +312,77 @@ ImageView hire,work;
     private void success() {
         Intent i1 = new Intent(Work_Portal.this, JobList.class);
         startActivity(i1);
+    }
+    private void notification()
+    {
+        sdf = new SimpleDateFormat("yyyyMMdd");
+        currentDateandTime = sdf.format(new Date());
+        FirebaseDatabase.getInstance().getReference("user").orderByChild("mobile").equalTo(a1).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                {
+                    user1=dataSnapshot1.getValue(user.class);
+                    // verify=user1.getId();
+                    job=user1.getJob_exp();
+                    if (!user1.getJob_exp().equals("0")) {
+                        String dateInString = job;  // Start date
+                        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+                        Calendar c = Calendar.getInstance();
+                        try {
+                            c.setTime(Objects.requireNonNull(sdf1.parse(dateInString)));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        c.add(Calendar.DATE, -5);
+                        SimpleDateFormat sdf4 = new SimpleDateFormat("yyyyMMdd");
+                        Date resultdate = new Date(c.getTimeInMillis());
+                        dateInString = sdf4.format(resultdate);
+                        if (Integer.parseInt(currentDateandTime) >= Integer.parseInt(dateInString) && Integer.parseInt(currentDateandTime) <= Integer.parseInt(job)) {
+                            matrimonynotification();
+
+                        }
+                        else if (Integer.parseInt(currentDateandTime)>Integer.parseInt(job))
+                        {dataSnapshot1.getRef().child("job_exp").setValue("0");
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    private void verfy(String jobExp)
+    {
+
+    }
+    private void matrimonynotification()
+    {
+        AlertDialog.Builder mBuilder =new AlertDialog.Builder(Work_Portal.this);
+        View mView=getLayoutInflater().inflate(R.layout.job_alert,null);
+        TextView reniew=(TextView)mView.findViewById(R.id.job_reniew);
+        Button close=(Button)mView.findViewById(R.id.close_job_alert);
+
+        reniew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startPayment();
+            }
+        });
+        mBuilder.setView(mView);
+        final AlertDialog dialog=mBuilder.create();
+        dialog.show();
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.hide();
+            }
+        });
     }
 }
 //.

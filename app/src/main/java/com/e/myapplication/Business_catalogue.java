@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -50,14 +52,14 @@ Button addbusiness,b1;
 EditText e1;
     private  user user1;
     private Query query;
-    private String currentDateandTime,a1,verify;
+    private String currentDateandTime,a1,business,verify;
     private SimpleDateFormat sdf;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
     DatabaseReference databaseReference;
 DatabaseReference businessCategoryTable;
 List<String> CategoryList = new ArrayList<>();
-
+    private Business_fav up_fav;
     int i = 0;
 
     @Override
@@ -76,7 +78,7 @@ List<String> CategoryList = new ArrayList<>();
         addbusiness=findViewById(R.id.addbusiness);
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("Categories");
         Checkout.preload(getApplicationContext());
-
+        notification();
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -371,6 +373,124 @@ List<String> CategoryList = new ArrayList<>();
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+    }
+    private void notification()
+    {sdf = new SimpleDateFormat("yyyyMMdd");
+        currentDateandTime = sdf.format(new Date());
+        FirebaseDatabase.getInstance().getReference("user").orderByChild("mobile").equalTo(a1).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                {user1=dataSnapshot1.getValue(user.class);
+                    business=user1.getBusss_exp();
+                    if (!user1.getJob_exp().equals("0")) {
+                        String dateInString = business;  // Start date
+                        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+                        Calendar c = Calendar.getInstance();
+                        try {
+                            c.setTime(Objects.requireNonNull(sdf1.parse(dateInString)));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        c.add(Calendar.DATE, -5);
+                        SimpleDateFormat sdf4 = new SimpleDateFormat("yyyyMMdd");
+                        Date resultdate = new Date(c.getTimeInMillis());
+                        dateInString = sdf4.format(resultdate);
+                        if (Integer.parseInt(currentDateandTime) >= Integer.parseInt(dateInString) && Integer.parseInt(currentDateandTime) <= Integer.parseInt(business)) {
+                            matrimonynotification();
+                        }
+                        else if (Integer.parseInt(currentDateandTime)>Integer.parseInt(business))
+                        {dataSnapshot1.getRef().child("busss_exp").setValue("0");
+                            business_details();
+                            business_fav();
+                            business_fav1();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    private void business_fav()
+    {
+        FirebaseDatabase.getInstance().getReference("Business_fav").child(a1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+                    dataSnapshot1.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void business_details()
+    {
+        FirebaseDatabase.getInstance().getReference("Business_Details").orderByChild("contact_number").equalTo(a1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+                    dataSnapshot1.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void business_fav1()
+    {
+        FirebaseDatabase.getInstance().getReference("Business_fav").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+                    for (DataSnapshot dataSnapshot2:dataSnapshot1.getChildren()) {
+                        up_fav =dataSnapshot2.getValue(Business_fav.class);
+                        if (up_fav.getMobile().equals(a1)) {
+                            dataSnapshot2.getRef().removeValue();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void matrimonynotification()
+    {
+        AlertDialog.Builder mBuilder =new AlertDialog.Builder(Business_catalogue.this);
+        View mView=getLayoutInflater().inflate(R.layout.business_alert,null);
+        TextView reniew=(TextView)mView.findViewById(R.id.business_reniew);
+        Button close=(Button)mView.findViewById(R.id.close_business_alert);
+
+        reniew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startPayment();
+            }
+        });
+        mBuilder.setView(mView);
+        final AlertDialog dialog=mBuilder.create();
+        dialog.show();
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.hide();
             }
         });
     }

@@ -33,6 +33,8 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class Matrimony_Image_Edit extends AppCompatActivity {
 ImageView horoscope_image,profile_image;
@@ -47,6 +49,7 @@ Button get_horoscope,upload_horoscope,getimage,uploadimage;
     DatabaseReference Matrimony_details;
     private String phonenumber,HoroscopeImage,profileImage;
     private up1 up;
+    private Uri resultUri;
     private ProgressBar pb,pb1;
     Query query;
     @Override
@@ -228,6 +231,78 @@ Button get_horoscope,upload_horoscope,getimage,uploadimage;
 
 
         if(i!=0) {
+
+            if (requestCode == PICK_IMAGE_REQUESTT && resultCode == RESULT_OK && data != null && data.getData() != null) {
+                ImageUri2 = data.getData();
+                CropImage.activity(ImageUri2)
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .setAspectRatio(1,1)
+                        .start(this);
+
+
+
+
+            }
+            if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+                CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                if (resultCode == RESULT_OK) {
+                    resultUri = result.getUri();
+                    Toast.makeText(getApplicationContext(),"succcess",Toast.LENGTH_SHORT).show();
+                    Picasso.with(this).load(resultUri).into(profile_image);
+                    profile_image.setImageURI(resultUri);
+                    if(resultUri != null) {
+                        final StorageReference fileReference2 = stt.child(System.currentTimeMillis() + "." + getFileExtension2(resultUri));
+
+                        fileReference2.putFile(resultUri)
+
+                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        fileReference2.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                            @Override
+                                            public void onSuccess(Uri uri) {
+                                                // Log.d(TAG, "onSuccess: uri= "+ uri.toString());
+                                                Handler handlerr =new Handler();
+                                                handlerr.postDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        pb1.setProgress(0);
+                                                        Toast.makeText(Matrimony_Image_Edit.this,"profilephoto Uploaded Succesfully",Toast.LENGTH_SHORT).show();
+
+                                                    }
+                                                },500);
+                                                profileImage = uri.toString();
+                                                uploadimage.setVisibility(View.VISIBLE);
+
+                                            }
+                                        });
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(Matrimony_Image_Edit.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                    }
+                                }) .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                double progresss = (100.0 * taskSnapshot.getBytesTransferred() /taskSnapshot.getTotalByteCount());
+                                pb1.setProgress((int)progresss);
+                            }
+                        });
+
+
+
+
+
+                    }
+                } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                    Exception error = result.getError();
+                }
+            }
+
+            /*
             if (requestCode == PICK_IMAGE_REQUESTT && resultCode == RESULT_OK && data != null && data.getData() != null) {
                 ImageUri2 = data.getData();
                 Picasso.with(this).load(ImageUri2).into(profile_image);
@@ -281,7 +356,7 @@ Button get_horoscope,upload_horoscope,getimage,uploadimage;
 
 
                 }
-            }}
+            }*/}
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

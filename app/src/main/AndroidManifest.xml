@@ -4,60 +4,106 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".About"></activity>
-        <activity android:name=".Matrimony_info_demo" />
-        <activity android:name=".Job_existing" />
-        <activity android:name=".Matrimony_View_Details" />
-        <activity android:name=".Matrimony_Image_Edit" />
-        <activity android:name=".Business_Image_Edit" />
-        <activity android:name=".Matrimony_Edit" />
-        <activity android:name=".Business_Edit" />
-        <activity android:name=".Business_Favourites" />
-        <activity android:name=".Matrimony_Favourite" />
-        <activity android:name=".JobList" />
-        <activity android:name=".Matrimony_info" />
-        <activity android:name=".Business_info" />
-        <activity android:name=".BusinessPortal" />
-        <activity android:name=".Work_Portal" />
-        <activity android:name=".logIn"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".signup" />
-        <activity android:name=".main" />
-        <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".signup2" />
-        <activity android:name=".viewhoroscope" />
-        <activity android:name=".horoscopedisplay" />
-        <activity android:name=".horoscope" />
-        <activity android:name=".Matrimonydisplay" />
-        <activity android:name=".studentdetails" />
-        <activity android:name=".Employportal" />
-        <activity android:name=".registration" />
-        <activity android:name=".Category" />
-        <activity android:name=".NR" />
-        <activity android:name=".Getting_Business_details" />
-        <activity android:name=".Business_catalogue" />
-        <activity android:name=".Job_Portal" />
-        <activity android:name=".Matrimony" />
-        <activity android:name=".Main2Activity" />
+
+
+
+        <activity android:name=".About"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Matrimony_info_demo"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Job_existing"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Matrimony_View_Details"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Matrimony_Image_Edit"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Business_Image_Edit"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Matrimony_Edit"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Business_Edit"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Business_Favourites"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Matrimony_Favourite"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".JobList"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Matrimony_info"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Business_info"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".BusinessPortal"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Work_Portal"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".logIn"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".signup"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".main"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ResetPasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".signup2"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".viewhoroscope"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".horoscopedisplay"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".horoscope"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Matrimonydisplay"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".studentdetails"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Employportal"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".registration"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Category"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".NR"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Getting_Business_details"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Business_catalogue"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Job_Portal"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Matrimony"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Main2Activity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<meta-data android:name="com.razorpay.ApiKey"
-    android:value="rzp_test_xtqYqnU0xxHbOl"/>
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_xtqYqnU0xxHbOl" />
+
+
     </application>
 
 </manifest>

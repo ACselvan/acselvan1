@@ -31,6 +31,14 @@
         app:fillColor="#ff8000"
         app:pageColor="#fbf7ea"
         app:snap="false" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/progress_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/matrimony_recycle"
     android:scrollbars="vertical"
@@ -39,6 +47,7 @@
     android:dividerHeight="4px"
     android:layout_height="match_parent"
     />
+    </RelativeLayout>
 </LinearLayout>
 <com.google.android.material.navigation.NavigationView
     android:id="@+id/matrimony_navigation"

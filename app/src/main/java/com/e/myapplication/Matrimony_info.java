@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,6 +71,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
     int i = 0;
     private String a11,a2,a3,a4,a5,a7,a6,a8;
     private images up1;
+    private ProgressBar mProgressCircle;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +80,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         phonenumber=sharedPreferences.getString("phonenumber","");
         editor = sharedPreferences.edit();
-
+        mProgressCircle = findViewById(R.id.progress_circle);
         recyclerView_matrimony=(RecyclerView)findViewById(R.id.matrimony_recycle);
         recyclerView_matrimony.setLayoutManager(new LinearLayoutManager(this));
         recyclerView_matrimony.addItemDecoration(new DividerItemDecoration(recyclerView_matrimony.getContext(), DividerItemDecoration.VERTICAL));
@@ -212,6 +214,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
                 }
                 adapter=new ViewHolderMatrimony(Matrimony_info.this,list,phonenumber);
                 recyclerView_matrimony.setAdapter(adapter);
+                mProgressCircle.setVisibility(View.INVISIBLE);
             }
 
             @Override

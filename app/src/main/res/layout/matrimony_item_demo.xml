@@ -9,17 +9,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+
     >
     <LinearLayout
         android:id="@+id/left_anime_matrimony"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+
         android:layout_gravity="center">
         <ImageView
             android:id="@+id/iv"
-            android:layout_width="110dp"
-            android:layout_height="150dp"
+
+            android:layout_width="155dp"
+            android:layout_height="110dp"
             tools:srcCompat="@tools:sample/avatars" />
         <Button
             android:id="@+id/fav"
@@ -31,6 +34,7 @@
             android:background="@drawable/ic_baseline_favorite_border_24" />
     </LinearLayout>
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

@@ -5,15 +5,24 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.NavUtils;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +33,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +42,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 import com.squareup.picasso.Picasso;
@@ -44,29 +57,28 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
+
 public class Main2Activity extends AppCompatActivity implements PaymentResultListener {
 TextView t1,t2,t3;
-Button date,next;
-    private CardView linear_business,linear_job,linear_matrimony;
-    private Calendar calendar;
-    private SimpleDateFormat dateFormat;
-    private String dat;
-    DatabaseReference databaseReference,databaseReference1,databaseReference2;
+
+    DatabaseReference databaseReference,databaseReference1;
     private  user user1;
-    private Query query,query1,query2,query3;
-    private String currentDateandTime;
-    private SimpleDateFormat sdf;
+    private Query query,query1,query2;
+    private String currentDateandTime,matrimony;
+    private SimpleDateFormat sdf,sdf3;
     String a1,verify="";
     private List<images> slideLists;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
-    //private String[] urls = new String[]{"https://firebasestorage.googleapis.com/v0/b/saivities.appspot.com/o/Uploads%2FHoroscope%2F1592375971175.jpg?alt=media&token=4519883c-9dc7-468c-8750-382b46939604","https://firebasestorage.googleapis.com/v0/b/saivities.appspot.com/o/Uploads%2FHoroscope%2F1592375971175.jpg?alt=media&token=4519883c-9dc7-468c-8750-382b46939604","https://firebasestorage.googleapis.com/v0/b/saivities.appspot.com/o/Uploads%2FHoroscope%2F1592375971175.jpg?alt=media&token=4519883c-9dc7-468c-8750-382b46939604"};
+
    LinearLayout matrimony_linear,business_linear,job_linear;
     private images up;
-
+    private mat_fav up_fav;
     ImageView matrimony_image,Business_image,job_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +94,7 @@ Button date,next;
         matrimony_image = findViewById(R.id.marriage_image);
         Business_image = findViewById(R.id.busiess_catelogue_image);
         job_image = findViewById(R.id.job_image);
-
+         DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference("homepage_images"),per=FirebaseDatabase.getInstance().getReference("Matrimony_Details"),use=FirebaseDatabase.getInstance().getReference("user"),databaseReferenc5=FirebaseDatabase.getInstance().getReference("mat_fav");
         slideLists = new ArrayList<>();
         sharedPreferences = getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         a1 = sharedPreferences.getString("phonenumber", "");
@@ -94,24 +106,15 @@ Button date,next;
         editor = sharedPreferences.edit();
         databaseReference1 = FirebaseDatabase.getInstance().getReference("Matrimony_Details");
         databaseReference1.keepSynced(true);
-        query2 = databaseReference.orderByChild("cellno").equalTo(a1);
-        //    date=(Button)findViewById(R.id.date);
+        query2 = databaseReference1.orderByChild("cellno").equalTo(a1);
+        notification();
         slide();
+        per.keepSynced(true);
+        use.keepSynced(true);
+        mDatabase.keepSynced(true);
+        databaseReferenc5.keepSynced(true);
 
-
-        //check();
-        /*signout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                editor.putString("phonenumber", "");
-                editor.commit();
-                finish();
-
-                Intent i1 = new Intent(Main2Activity.this, logIn.class);
-                startActivity(i1);
-            }
-        });*/
+/*
         business_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,8 +122,8 @@ Button date,next;
                 startActivity(i);
 
             }
-        });
-
+        });*/
+/*
         matrimony_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,29 +140,7 @@ Button date,next;
                             //Toast.makeText(getApplicationContext(),user1.getMat_exp(),Toast.LENGTH_SHORT).show();
                             if (Integer.parseInt(currentDateandTime) <= Integer.parseInt(user1.mat_exp)) {
                                 success();
-                                /*FirebaseDatabase.getInstance().getReference("Matrimony_Details").orderByChild("cellno").equalTo(a1).addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        //  up1 up=dataSnapshot.getValue(up1.class);
-                                        if (dataSnapshot.getChildrenCount() == 0) {
-                                            Intent i1 = new Intent(Main2Activity.this, NR.class);
-                                            startActivity(i1);
-                                            finish();
-                                        } else {
-                                            Intent i1 = new Intent(Main2Activity.this, Matrimony_info.class);
-                                            //Toast.makeText(getApplicationContext(),up.getSex(),Toast.LENGTH_SHORT).show();
-                                            startActivity(i1);
-                                            finish();
-                                        }
-                                    }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });/*
-                               /* Intent i1=new Intent(Main2Activity.this,Matrimony.class);
-                                startActivity(i1);*/
                             } else if (verify.equals("0")) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
                                 builder.setTitle("only prmium members");
@@ -201,7 +182,7 @@ Button date,next;
 
 
             }
-        });
+        });*/
 /*        date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -213,31 +194,88 @@ Button date,next;
 
  */
     }
-    private void check()
-    {
-        query1.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
-                {
-                    user1=dataSnapshot1.getValue(user.class);
-                   // verify=user1.getId();
-                    editor.putString("id_user",user1.getId());
-                    editor.commit();
+public void business(View view)
+{
+    Intent i = new Intent(Main2Activity.this, Business_catalogue.class);
+    startActivity(i);
+}
+public void marriage(View view)
+{
+    sdf = new SimpleDateFormat("yyyyMMdd");
+    currentDateandTime = sdf.format(new Date());
+
+    query.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                user1 = dataSnapshot1.getValue(user.class);
+                verify = user1.getMat_exp();
+                //Toast.makeText(getApplicationContext(),user1.getMat_exp(),Toast.LENGTH_SHORT).show();
+                if (Integer.parseInt(currentDateandTime) <= Integer.parseInt(user1.mat_exp)) {
+                    success();
+                                /*FirebaseDatabase.getInstance().getReference("Matrimony_Details").orderByChild("cellno").equalTo(a1).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        //  up1 up=dataSnapshot.getValue(up1.class);
+                                        if (dataSnapshot.getChildrenCount() == 0) {
+                                            Intent i1 = new Intent(Main2Activity.this, NR.class);
+                                            startActivity(i1);
+                                            finish();
+                                        } else {
+                                            Intent i1 = new Intent(Main2Activity.this, Matrimony_info.class);
+                                            //Toast.makeText(getApplicationContext(),up.getSex(),Toast.LENGTH_SHORT).show();
+                                            startActivity(i1);
+                                            finish();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });/*
+                               /* Intent i1=new Intent(Main2Activity.this,Matrimony.class);
+                                startActivity(i1);*/
+                } else if (verify.equals("0")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
+                    builder.setTitle("only prmium members");
+                    builder.setMessage("click payup to pay fee for entering matrimony");
+                    builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startPayment();
+                        }
+                    });
+                    builder.create().show();
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
+                    builder.setTitle("premium membership expired");
+                    builder.setMessage("finish the payment for continue matrimony service");
+                    builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startPayment();
+                        }
+                    });
+                    builder.create().show();
                 }
             }
+        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-
-
-    }
-
+        }
+    });
+}
+public void job(View view)
+{
+    Intent k = new Intent(Main2Activity.this, Work_Portal.class);
+    startActivity(k);
+}
 private void slide()
 {
+
     FirebaseDatabase.getInstance().getReference("homepage_images").addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -246,6 +284,7 @@ private void slide()
                 Picasso.with(getApplicationContext()).load(up.getImage2()).into(job_image);
                 Picasso.with(getApplicationContext()).load(up.getImage1()).into(matrimony_image);
                 Picasso.with(getApplicationContext()).load(up.getImage()).into(Business_image);
+
             }
 
         }
@@ -456,4 +495,140 @@ private void slide2()
             }
         });
     }
+    private void notification()
+    {
+        sdf = new SimpleDateFormat("yyyyMMdd");
+        currentDateandTime = sdf.format(new Date());
+       FirebaseDatabase.getInstance().getReference("user").orderByChild("mobile").equalTo(a1).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                {
+
+
+                    FirebaseDatabase.getInstance().getReference("user").orderByChild("mobile").equalTo(a1).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                            {
+                                user1=dataSnapshot1.getValue(user.class);
+                                // verify=user1.getId();
+                                matrimony=user1.getMat_exp();
+                                if (!user1.getJob_exp().equals("0")) {
+                                    String dateInString = matrimony;  // Start date
+                                    SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+                                    Calendar c = Calendar.getInstance();
+                                    try {
+                                        c.setTime(Objects.requireNonNull(sdf1.parse(dateInString)));
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+                                    c.add(Calendar.DATE, -5);
+                                    SimpleDateFormat sdf4 = new SimpleDateFormat("yyyyMMdd");
+                                    Date resultdate = new Date(c.getTimeInMillis());
+                                    dateInString = sdf4.format(resultdate);
+                                    if (Integer.parseInt(currentDateandTime) >= Integer.parseInt(dateInString) && Integer.parseInt(currentDateandTime) <= Integer.parseInt(matrimony)) {
+                                        matrimonynotification();
+                                    }
+                                    else if (Integer.parseInt(currentDateandTime)>Integer.parseInt(matrimony))
+                                    {dataSnapshot1.getRef().child("mat_exp").setValue("0");
+                                        matrimonmy_details();
+                                        mat_fav();
+                                        mat_fav1();
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    private void matrimonmy_details()
+    {
+        query2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+                    dataSnapshot1.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void mat_fav()
+    {
+        FirebaseDatabase.getInstance().getReference("mat_fav").child(a1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+                    dataSnapshot1.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void mat_fav1()
+    {
+        FirebaseDatabase.getInstance().getReference("mat_fav").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+                    for (DataSnapshot dataSnapshot2:dataSnapshot1.getChildren()) {
+                    up_fav =dataSnapshot2.getValue(mat_fav.class);
+                    if (up_fav.getMobile().equals(a1)) {
+                        dataSnapshot2.getRef().removeValue();
+                    }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+                    private void matrimonynotification()
+                    {
+                        AlertDialog.Builder mBuilder =new AlertDialog.Builder(Main2Activity.this);
+                        View mView=getLayoutInflater().inflate(R.layout.matrimony_alert,null);
+                        TextView reniew=(TextView)mView.findViewById(R.id.matrimony_reniew);
+                        Button close=(Button)mView.findViewById(R.id.close_matrimony_alert);
+
+                        reniew.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                startPayment();
+                            }
+                        });
+                        mBuilder.setView(mView);
+                        final AlertDialog dialog=mBuilder.create();
+                        dialog.show();
+                        close.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.hide();
+                            }
+                        });
+                    }
 }
