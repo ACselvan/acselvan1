@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:padding="50dp"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,34 +13,55 @@
             <Button
                 android:layout_gravity="end"
                 android:id="@+id/close_job_alert"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="close"/>
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/close"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="This is the last week"
+                android:textColor="#000000"
                 android:textSize="25sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="your Matrimony account is going to expire within a week reniew your account to continue our service"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="20dp"
+                android:text="  your Job account is going to expire within a week reniew your account to continue our service"
                 android:textSize="25sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Otherwise Your Account will remove from database permanentally then you have to create a new Premium account"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="20dp"
+                android:text="  Otherwise Your Account will be removed from database permanentally then you have to create a new Premium account"
                 android:textSize="25sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
             <TextView
                 android:id="@+id/job_reniew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="click here to pay"
+                android:textColor="#0000FF"
                 android:textSize="25sp"/>
+            <TextView
+                android:gravity="bottom"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="   to pay"
+                android:textColor="#000000"
+                android:textSize="25sp"/>
+        </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

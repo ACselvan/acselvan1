@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
@@ -46,6 +48,14 @@ public class MainActivity extends AppCompatActivity implements PaymentResultList
                 matrimonynotification();
             }
         });
+        YoYo.with(Techniques.Tada)
+                .duration(700)
+                .repeat(1)
+                .playOn(imageView);
+        YoYo.with(Techniques.Tada)
+                .duration(700)
+                .repeat(1)
+                .playOn(login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

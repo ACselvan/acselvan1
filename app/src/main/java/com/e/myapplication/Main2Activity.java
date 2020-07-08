@@ -114,7 +114,7 @@ TextView t1,t2,t3;
         mDatabase.keepSynced(true);
         databaseReferenc5.keepSynced(true);
 
-/*
+
         business_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,8 +122,8 @@ TextView t1,t2,t3;
                 startActivity(i);
 
             }
-        });*/
-/*
+        });
+
         matrimony_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,7 +182,7 @@ TextView t1,t2,t3;
 
 
             }
-        });*/
+        });
 /*        date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -194,85 +194,6 @@ TextView t1,t2,t3;
 
  */
     }
-public void business(View view)
-{
-    Intent i = new Intent(Main2Activity.this, Business_catalogue.class);
-    startActivity(i);
-}
-public void marriage(View view)
-{
-    sdf = new SimpleDateFormat("yyyyMMdd");
-    currentDateandTime = sdf.format(new Date());
-
-    query.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                user1 = dataSnapshot1.getValue(user.class);
-                verify = user1.getMat_exp();
-                //Toast.makeText(getApplicationContext(),user1.getMat_exp(),Toast.LENGTH_SHORT).show();
-                if (Integer.parseInt(currentDateandTime) <= Integer.parseInt(user1.mat_exp)) {
-                    success();
-                                /*FirebaseDatabase.getInstance().getReference("Matrimony_Details").orderByChild("cellno").equalTo(a1).addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        //  up1 up=dataSnapshot.getValue(up1.class);
-                                        if (dataSnapshot.getChildrenCount() == 0) {
-                                            Intent i1 = new Intent(Main2Activity.this, NR.class);
-                                            startActivity(i1);
-                                            finish();
-                                        } else {
-                                            Intent i1 = new Intent(Main2Activity.this, Matrimony_info.class);
-                                            //Toast.makeText(getApplicationContext(),up.getSex(),Toast.LENGTH_SHORT).show();
-                                            startActivity(i1);
-                                            finish();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });/*
-                               /* Intent i1=new Intent(Main2Activity.this,Matrimony.class);
-                                startActivity(i1);*/
-                } else if (verify.equals("0")) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
-                    builder.setTitle("only prmium members");
-                    builder.setMessage("click payup to pay fee for entering matrimony");
-                    builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            startPayment();
-                        }
-                    });
-                    builder.create().show();
-                } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
-                    builder.setTitle("premium membership expired");
-                    builder.setMessage("finish the payment for continue matrimony service");
-                    builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            startPayment();
-                        }
-                    });
-                    builder.create().show();
-                }
-            }
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-    });
-}
-public void job(View view)
-{
-    Intent k = new Intent(Main2Activity.this, Work_Portal.class);
-    startActivity(k);
-}
 private void slide()
 {
 
@@ -445,15 +366,29 @@ private void slide2()
         c.add(Calendar.DATE, 180);  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
         String output = sdf1.format(c.getTime());
-        exp(output);
+        exp(output,s);
         success();
     }
 
     @Override
-    public void onPaymentError(int i, String s) {
-        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
+    public void onPaymentError(int i, final String s) {
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                {
+
+                    dataSnapshot1.getRef().child("mat_payment_failure_id").setValue(s);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
-    private void exp(final String output)
+    private void exp(final String output, final String s)
     {
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -461,7 +396,7 @@ private void slide2()
                 for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
                 {
                     dataSnapshot1.getRef().child("mat_exp").setValue(output);
-
+                    dataSnapshot1.getRef().child("mat_payment_id").setValue(s);
                 }
             }
 

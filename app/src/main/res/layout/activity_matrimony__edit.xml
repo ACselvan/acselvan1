@@ -76,7 +76,7 @@
                 android:id="@+id/Age_matrimony_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:background="@drawable/border1"
                 android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
@@ -152,7 +152,7 @@
                 android:id="@+id/t5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Height"
+                android:text="Height in CM"
                 android:textColor="#000000"
                 android:textSize="25sp"
                 android:layout_marginLeft="10dp"/>

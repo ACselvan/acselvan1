@@ -78,7 +78,7 @@
                 android:id="@+id/Age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:background="@drawable/border1"
                 android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
@@ -398,8 +398,9 @@
 
             <ImageView
                 android:id="@+id/iv"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 tools:srcCompat="@tools:sample/avatars" />
             <Button
                 android:id="@+id/uploadHoroscope"
@@ -430,8 +431,9 @@
 
             <ImageView
                 android:id="@+id/iv1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 tools:srcCompat="@tools:sample/avatars" />
             <Button
                 android:id="@+id/uploadimage"

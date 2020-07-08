@@ -101,7 +101,7 @@
             android:theme="@style/Base.Theme.AppCompat"/>
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_xtqYqnU0xxHbOl" />
+            android:value="rzp_test_TTLtgDDLa7gDgj" />
 
 
     </application>
