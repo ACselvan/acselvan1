@@ -51,29 +51,7 @@
         />
 </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
 
-        android:orientation="vertical"
-        android:layout_height="match_parent"
-
-       android:gravity="bottom">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Powered By"
-            android:textSize="25sp"
-
-            android:layout_marginRight="40dp"
-            android:layout_gravity="end"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/technotribe"
-
-        android:layout_gravity="end"
-        />
-    </LinearLayout>
 
 
 </LinearLayout>
