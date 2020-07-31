@@ -33,6 +33,8 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class Business_Image_Edit extends AppCompatActivity {
     private SharedPreferences.Editor editor;
@@ -41,7 +43,7 @@ public class Business_Image_Edit extends AppCompatActivity {
     DatabaseReference Business_details,businessCategoryTable;
     String phonenumber;
     Query query;
-    Uri ImageUri;
+    Uri ImageUri,ImageUri2,resultUri;
     Upload upload;
     String imageurl;
     Button getimage,uploadimage;
@@ -122,65 +124,75 @@ public class Business_Image_Edit extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            ImageUri = data.getData();
-            Picasso.with(this).load(ImageUri).into(image);
-            image.setImageURI(ImageUri);
+            ImageUri2 = data.getData();
+            CropImage.activity(ImageUri2)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(1,2)
+                    .start(this);
 
 
-            if(ImageUri != null) {
-                final StorageReference fileReference = st.child(System.currentTimeMillis() + "." + getFileExtension(ImageUri));
-
-                fileReference.putFile(ImageUri)
-
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        // Log.d(TAG, "onSuccess: uri= "+ uri.toString());
-                                        Handler handler =new Handler();
-                                        handler.postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                image_progress.setProgress(0);
-                                                //Toast.makeText(Getting_Business_details.this,"Horoscope Uploaded Succesfully",Toast.LENGTH_SHORT).show();
-
-                                            }
-                                        },500);
-                                        imageurl = uri.toString();
-                                        uploadimage.setVisibility(View.VISIBLE);
-                                        // Toast.makeText(Getting_Business_details.this,uri.toString(),Toast.LENGTH_SHORT).show();
-
-                                    }
-                                });
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Business_Image_Edit.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                            }
-                        }) .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        double progress = (100.0 * taskSnapshot.getBytesTransferred() /taskSnapshot.getTotalByteCount());
-                        image_progress.setProgress((int)progress);
-                    }
-                });
-
-            }
 
 
         }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                resultUri = result.getUri();
+                Toast.makeText(getApplicationContext(),"succcess",Toast.LENGTH_SHORT).show();
+                Picasso.with(this).load(resultUri).into(image);
+                image.setImageURI(resultUri);
+                if(resultUri != null) {
+                    final StorageReference fileReference =st.child(System.currentTimeMillis() + "." + getFileExtension(resultUri));
+
+                    fileReference.putFile(resultUri)
+
+                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+
+                                            Handler handlerr =new Handler();
+                                            handlerr.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    image_progress.setProgress(0);
+                                                    Toast.makeText(Business_Image_Edit.this,"Photo Uploaded Succesfully",Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            },500);
+                                            imageurl = uri.toString();
+                                            uploadimage.setVisibility(View.VISIBLE);
+
+                                        }
+                                    });
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(Business_Image_Edit.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                }
+                            }) .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progresss = (100.0 * taskSnapshot.getBytesTransferred() /taskSnapshot.getTotalByteCount());
+                            image_progress.setProgress((int)progresss);
+                        }
+                    });
 
 
 
 
+
+                }
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
 
     }
     @Override

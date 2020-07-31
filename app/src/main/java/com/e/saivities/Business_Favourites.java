@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,6 +51,7 @@ public class Business_Favourites extends AppCompatActivity implements Navigation
         phonenumber=sharedPreferences.getString("phonenumber","");
         recyclerView_matrimony=(RecyclerView)findViewById(R.id.businessfavourite_recycle);
         recyclerView_matrimony.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView_matrimony.addItemDecoration(new DividerItemDecoration(recyclerView_matrimony.getContext(), DividerItemDecoration.VERTICAL));
         drawerLayout=(DrawerLayout)findViewById(R.id.businessfavourite_drawer);
         matrimony_favourites=(Button)drawerLayout.findViewById(R.id.matrimony_favourites);
         toggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);

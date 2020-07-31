@@ -202,9 +202,9 @@
                 android:id="@+id/submit_edit"
                 android:layout_width="220dp"
                 android:layout_marginTop="20dp"
-                android:layout_height="wrap_content"
-                android:text="upload"
-                android:background="@drawable/button"
+                android:layout_height="60dp"
+                android:text="submit"
+                android:background="@drawable/buttonbg"
                 android:layout_gravity="center"/>
 
         </LinearLayout>

@@ -98,21 +98,21 @@
         <Button
             android:id="@+id/gethoroscope"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="get horoscope IMAGE"
 
-            android:background="@drawable/button"
+            android:background="@drawable/buttonbg"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             />
         <Button
             android:id="@+id/uploadhoroscope_edit"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="UPDATE HOROSCOPE IMAGE"
             android:layout_marginTop="10dp"
 
-            android:background="@drawable/button"
+            android:background="@drawable/buttonbg"
             android:layout_gravity="center"
             />
     </LinearLayout>
@@ -134,8 +134,8 @@
         <Button
         android:id="@+id/uploadimage_edit"
             android:layout_width="250dp"
-        android:layout_height="wrap_content"
-            android:background="@drawable/button"
+        android:layout_height="60dp"
+            android:background="@drawable/buttonbg"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
         android:text="GET PROFILE IMAGE" />
@@ -143,8 +143,8 @@
         <Button
             android:id="@+id/uploadprofile_edit"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonbg"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="UPDATE PROFILE IMAGE"

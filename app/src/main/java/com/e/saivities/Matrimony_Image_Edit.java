@@ -236,7 +236,7 @@ Button get_horoscope,upload_horoscope,getimage,uploadimage;
                 ImageUri2 = data.getData();
                 CropImage.activity(ImageUri2)
                         .setGuidelines(CropImageView.Guidelines.ON)
-                        .setAspectRatio(1,1)
+                        .setAspectRatio(1,2)
                         .start(this);
 
 
@@ -247,7 +247,7 @@ Button get_horoscope,upload_horoscope,getimage,uploadimage;
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);
                 if (resultCode == RESULT_OK) {
                     resultUri = result.getUri();
-                    Toast.makeText(getApplicationContext(),"succcess",Toast.LENGTH_SHORT).show();
+
                     Picasso.with(this).load(resultUri).into(profile_image);
                     profile_image.setImageURI(resultUri);
                     if(resultUri != null) {
@@ -302,61 +302,7 @@ Button get_horoscope,upload_horoscope,getimage,uploadimage;
                 }
             }
 
-            /*
-            if (requestCode == PICK_IMAGE_REQUESTT && resultCode == RESULT_OK && data != null && data.getData() != null) {
-                ImageUri2 = data.getData();
-                Picasso.with(this).load(ImageUri2).into(profile_image);
-                profile_image.setImageURI(ImageUri2);
-
-
-                if(ImageUri2 != null) {
-                    final StorageReference fileReference2 = stt.child(System.currentTimeMillis() + "." + getFileExtension2(ImageUri2));
-
-                    fileReference2.putFile(ImageUri2)
-
-                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    fileReference2.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
-                                            // Log.d(TAG, "onSuccess: uri= "+ uri.toString());
-                                            Handler handlerr =new Handler();
-                                            handlerr.postDelayed(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    pb1.setProgress(0);
-                                                    Toast.makeText(Matrimony_Image_Edit.this,"profilephoto Uploaded Succesfully",Toast.LENGTH_SHORT).show();
-
-                                                }
-                                            },500);
-                                            profileImage = uri.toString();
-                                            uploadimage.setVisibility(View.VISIBLE);
-
-                                        }
-                                    });
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(Matrimony_Image_Edit.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                                }
-                            }) .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progresss = (100.0 * taskSnapshot.getBytesTransferred() /taskSnapshot.getTotalByteCount());
-                            pb1.setProgress((int)progresss);
-                        }
-                    });
-
-
-
-
-
-                }
-            }*/}
+            }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

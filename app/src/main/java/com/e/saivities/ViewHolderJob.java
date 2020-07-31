@@ -31,9 +31,11 @@ public class ViewHolderJob extends RecyclerView.Adapter<ViewHolderJob.myViewHold
         holder.name_job.setText(emp.get(position).getName());
         holder.qualification_job.setText(emp.get(position).getQualification());
         holder.date_job.setText(emp.get(position).getDttm());
-        holder.number_job.setText(emp.get(position).getNum());
+        holder.number_job.setText("No.of.post:"+emp.get(position).getNum());
         holder.address_job.setText(emp.get(position).getAddress());
         holder.city.setText(emp.get(position).getCity());
+        holder.phonenumber.setText(emp.get(position).getPhone());
+        holder.description.setText(emp.get(position).getDescription());
        // Picasso.with(context).load(list.get(position).getImageurl()).into(holder.job_image);
     }
 
@@ -43,7 +45,7 @@ public class ViewHolderJob extends RecyclerView.Adapter<ViewHolderJob.myViewHold
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        TextView name_job,qualification_job,date_job,number_job,address_job,city;
+        TextView name_job,qualification_job,date_job,number_job,address_job,city,phonenumber,description;
         //ImageView job_image;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -53,6 +55,8 @@ public class ViewHolderJob extends RecyclerView.Adapter<ViewHolderJob.myViewHold
             number_job=(TextView)itemView.findViewById(R.id.number_job);
             address_job=(TextView)itemView.findViewById(R.id.address_job);
             city=(TextView)itemView.findViewById(R.id.city_job_item);
+            phonenumber=(TextView)itemView.findViewById(R.id.phonenumber_job);
+            description=(TextView)itemView.findViewById(R.id.description_job_item);
             //job_image=(ImageView)itemView.findViewById(R.id.job_image);
         }
     }

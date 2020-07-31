@@ -42,14 +42,14 @@ import java.util.Objects;
 
 public class Main2Activity extends AppCompatActivity implements PaymentResultListener {
 TextView t1,t2,t3;
-
+    private String stat="0";
     DatabaseReference databaseReference,databaseReference1;
     private  user user1;
-    private Query query,query1,query2;
+    private Query query,query2;
     private String currentDateandTime,matrimony;
-    private SimpleDateFormat sdf,sdf3;
+    private SimpleDateFormat sdf;
     String a1,verify="";
-    private List<images> slideLists;
+
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
     private long mBackPressed;;
@@ -73,20 +73,20 @@ TextView t1,t2,t3;
         Business_image = findViewById(R.id.busiess_catelogue_image);
         job_image = findViewById(R.id.job_image);
          DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference("homepage_images"),per=FirebaseDatabase.getInstance().getReference("Matrimony_Details"),use=FirebaseDatabase.getInstance().getReference("user"),databaseReferenc5=FirebaseDatabase.getInstance().getReference("mat_fav");
-        slideLists = new ArrayList<>();
+
         sharedPreferences = getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         a1 = sharedPreferences.getString("phonenumber", "");
         databaseReference = FirebaseDatabase.getInstance().getReference("user");
         getSupportActionBar().setTitle("Home");
         databaseReference.keepSynced(true);
         query = databaseReference.orderByChild("mobile").equalTo(a1);
-        query1 = databaseReference.orderByChild("mobile").equalTo(a1);
+
         editor = sharedPreferences.edit();
         databaseReference1 = FirebaseDatabase.getInstance().getReference("Matrimony_Details");
         databaseReference1.keepSynced(true);
         query2 = databaseReference1.orderByChild("cellno").equalTo(a1);
         notification();
-        //slide();
+
         per.keepSynced(true);
         use.keepSynced(true);
         mDatabase.keepSynced(true);
@@ -115,7 +115,7 @@ TextView t1,t2,t3;
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             user1 = dataSnapshot1.getValue(user.class);
                             verify = user1.getMat_exp();
-                            //Toast.makeText(getApplicationContext(),user1.getMat_exp(),Toast.LENGTH_SHORT).show();
+
                             if (Integer.parseInt(currentDateandTime) <= Integer.parseInt(user1.mat_exp)) {
                                 success();
 
@@ -128,6 +128,7 @@ TextView t1,t2,t3;
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         startPayment();
+                                        stat="1";
                                     }
                                 });
                                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -146,7 +147,8 @@ TextView t1,t2,t3;
                                 builder1.setPositiveButton("Proceed To Payment", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        startPayment();
+                                        startPayment_renewl();
+                                        stat="2";
                                     }
                                 });
                                 builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -177,78 +179,9 @@ TextView t1,t2,t3;
 
             }
         });
-/*        date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i1=new Intent(Main2Activity.this,BusinessPortal.class);
-                startActivity(i1);
-            }
-        });
 
-
- */
     }
-    /*
-private void slide()
-{
 
-    FirebaseDatabase.getInstance().getReference("homepage_images").addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
-                up = dataSnapshot1.getValue(images.class);
-                Picasso.with(getApplicationContext()).load(up.getImage2()).into(job_image);
-                Picasso.with(getApplicationContext()).load(up.getImage1()).into(matrimony_image);
-                Picasso.with(getApplicationContext()).load(up.getImage()).into(Business_image);
-
-            }
-
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-    });
-}*/
-/*
-private void slide1()
-{
-    FirebaseDatabase.getInstance().getReference("homepage_images").addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
-                up = dataSnapshot1.getValue(images.class);
-
-
-            }
-
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-    });
-}
-private void slide2()
-{
-    FirebaseDatabase.getInstance().getReference("homepage_images").addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
-                up = dataSnapshot1.getValue(images.class);
-
-            }
-
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-    });
-}*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -334,7 +267,8 @@ private void slide2()
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             // options.put("order_id", "order_9A33XWu170gUtm");
             options.put("currency", "INR");
-
+            options.put("prefill.contact",a1);
+            options.put("payment_capture", true);
             /**
              * Amount is always passed in currency subunits
              * Eg: "500" = INR 5.00
@@ -346,23 +280,95 @@ private void slide2()
             Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
     }
+    public void startPayment_renewl() {
 
+        /**
+         * Instantiate Checkout
+         */
+        Checkout checkout = new Checkout();
+
+        /**
+         * Set your logo here
+         */
+        checkout.setImage(R.drawable.homepageimage);
+
+        /**
+         * Reference to current activity
+         */
+        final Activity activity = this;
+
+        /**
+         * Pass your payment options to the Razorpay Checkout as a JSONObject
+         */
+        try {
+            JSONObject options = new JSONObject();
+
+            /**
+             * Merchant Name
+             * eg: ACME Corp || HasGeek etc.
+             */
+            options.put("name", "Saivities");
+
+            /**
+             * Description can be anything
+             * eg: Reference No. #123123 - This order number is passed by you for your internal reference. This is not the `razorpay_order_id`.
+             *     Invoice Payment
+             *     etc.
+             */
+            options.put("description", "Reference No. #"+a1);
+            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+            // options.put("order_id", "order_9A33XWu170gUtm");
+            options.put("currency", "INR");
+            options.put("prefill.contact",a1);
+            options.put("payment_capture", true);
+            /**
+             * Amount is always passed in currency subunits
+             * Eg: "500" = INR 5.00
+             */
+            options.put("amount", "25000");
+
+            checkout.open(activity, options);
+        } catch(Exception e) {
+            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
     @Override
     public void onPaymentSuccess(String s) {
-        sdf = new SimpleDateFormat("yyyy-MM-dd");
-        currentDateandTime = sdf.format(new Date());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar c = Calendar.getInstance();
-        try {
-            c.setTime(sdf.parse(currentDateandTime));
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (stat.equals("1"))
+        {
+            sdf = new SimpleDateFormat("yyyy-MM-dd");
+            currentDateandTime = sdf.format(new Date());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar c = Calendar.getInstance();
+            try {
+                c.setTime(sdf.parse(currentDateandTime));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            c.add(Calendar.DATE, 150);  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+            String output = sdf1.format(c.getTime());
+            exp(output,s);
+            success();
         }
-        c.add(Calendar.DATE, 180);  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
-        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
-        String output = sdf1.format(c.getTime());
-        exp(output,s);
-        success();
+        else if (stat.equals("2"))
+        {
+            sdf = new SimpleDateFormat("yyyy-MM-dd");
+            currentDateandTime = sdf.format(new Date());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar c = Calendar.getInstance();
+            try {
+                c.setTime(sdf.parse(currentDateandTime));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            c.add(Calendar.DATE, 60);  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+            String output = sdf1.format(c.getTime());
+            exp(output,s);
+            success();
+        }
+
     }
 
     @Override
@@ -534,7 +540,8 @@ private void slide2()
                         reniew.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                startPayment();
+                                startPayment_renewl();
+                                stat="2";
                             }
                         });
                         mBuilder.setView(mView);

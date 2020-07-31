@@ -43,8 +43,8 @@ import java.util.Objects;
 
 public class Business_catalogue extends AppCompatActivity implements AdapterView.OnItemClickListener, PaymentResultListener {
 ListView lv;
-Button addbusiness,b1;
-EditText e1;
+Button addbusiness;
+
     private  user user1;
     private Query query;
     private String currentDateandTime,a1,business,verify;
@@ -62,8 +62,8 @@ List<String> CategoryList = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_catalogue);
         lv=findViewById(R.id.lv);
-        b1 = findViewById(R.id.b1);
-        e1= findViewById(R.id.e1);
+
+
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         a1=sharedPreferences.getString("phonenumber","");
         databaseReference= FirebaseDatabase.getInstance().getReference("user");
@@ -74,16 +74,7 @@ List<String> CategoryList = new ArrayList<>();
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("Categories");
         Checkout.preload(getApplicationContext());
         notification();
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                i =i+1;
 
-                String name = e1.getText().toString().trim();
-                Upload upload  = new Upload(name);
-                businessCategoryTable.child(String.valueOf(i)).setValue(upload);
-            }
-        });
        businessCategoryTable.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -123,30 +114,7 @@ List<String> CategoryList = new ArrayList<>();
                             //Toast.makeText(getApplicationContext(),user1.getMat_exp(),Toast.LENGTH_SHORT).show();
                             if (Integer.parseInt(currentDateandTime)<=Integer.parseInt(user1.busss_exp))
                             {success();
-                                /*
-                                FirebaseDatabase.getInstance().getReference("Business_Details").orderByChild("contact_number").equalTo(a1).addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if (dataSnapshot.getChildrenCount() == 0)
-                                        {
-                                            Intent i=new Intent(Business_catalogue.this,Getting_Business_details.class);
-                                            startActivity(i);
 
-                                        }else
-                                        {
-                                            Intent i=new Intent(Business_catalogue.this,Business_Edit.class);
-                                            startActivity(i);
-                                        }
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });*/
-                                /*Intent i=new Intent(Business_catalogue.this,Getting_Business_details.class);
-                                startActivity(i);*/
                             }
                             else if (verify.equals("0"))
                             {
@@ -309,12 +277,14 @@ List<String> CategoryList = new ArrayList<>();
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             // options.put("order_id", "order_9A33XWu170gUtm");
             options.put("currency", "INR");
+            options.put("payment_capture", true);
 
             /**
              * Amount is always passed in currency subunits
              * Eg: "500" = INR 5.00
              */
-            options.put("amount", "50000");
+            //options.put("amount", "500");
+            options.put("amount", "100000");
 
             checkout.open(activity, options);
         } catch(Exception e) {
@@ -333,7 +303,7 @@ List<String> CategoryList = new ArrayList<>();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        c.add(Calendar.DATE, 180);  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
+        c.add(Calendar.DATE, 365);  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
         String output = sdf1.format(c.getTime());
         exp(output,s);

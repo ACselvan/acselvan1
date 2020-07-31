@@ -38,12 +38,12 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Employportal extends AppCompatActivity {
-    EditText q1,q2,q3,q4,q5,city_edit;
+    EditText q1,q2,q3,q4,q5;
     Button b1,datepicker,timepicker;
     DatabaseReference Employer_details;
     String Namee,Qualificationn,Addresss,Dttmm,Numm,city="";
     TextView date_text,time_text;
-    String datechar="",timechar="",exp,a1;
+    String datechar="",timechar="",exp,a1,description;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
     DatabaseReference businessCategoryTable;
@@ -82,7 +82,7 @@ public class Employportal extends AppCompatActivity {
                 timePick();
                           }
         });
-        businessCategoryTable.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("city_business").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CategoryList.clear();//to prevent repititoin and again retrievin
@@ -110,13 +110,13 @@ public class Employportal extends AppCompatActivity {
                 Namee=q1.getText().toString().trim();
                 Qualificationn=q2.getText().toString().trim();
                 Addresss=q3.getText().toString().trim();
-                //Dttmm=q4.getText().toString().trim();
+                description=q4.getText().toString().trim();
                 Numm=q5.getText().toString().trim();
                 String id = Employer_details.push().getKey();
                 Dttmm="Date:"+datechar+",  time:"+timechar;
-                if (!Namee.equals("")&&!Qualificationn.equals("")&&!Addresss.equals("")&&!Numm.equals("")&&!datechar.equals("")&&!timechar.equals("")&&!city.equals(""))
+                if (!Namee.equals("")&&!Qualificationn.equals("")&&!Addresss.equals("")&&!Numm.equals("")&&!datechar.equals("")&&!timechar.equals("")&&!city.equals("")&&!description.equals(""))
                 {
-                Employportalupload Employportalupload = new Employportalupload(Namee,Qualificationn,Addresss,Dttmm,Numm,exp,city,a1,id);
+                Employportalupload Employportalupload = new Employportalupload(Namee,Qualificationn,Addresss,Dttmm,Numm,exp,city,a1,id,description);
                 Employer_details.child(id).setValue(Employportalupload);
                 city="";
                 Intent i1=new Intent(Employportal.this,Work_Portal.class);
@@ -147,7 +147,7 @@ public class Employportal extends AppCompatActivity {
             DatePickerDialog datePickerDialog=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker datePicker, int year, int month, int date) {
-                    String expiry=year+" "+month+" "+date;
+
                     Calendar calendar1=Calendar.getInstance();
                     calendar1.set(Calendar.YEAR,year);
                     calendar1.set(Calendar.MONTH,month);

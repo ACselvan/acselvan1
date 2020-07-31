@@ -8,34 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:48003190773:android:a268aaffa393306d595abc",
+        "mobilesdk_app_id": "1:48003190773:android:0046dc35cf3aa8b6595abc",
         "android_client_info": {
-          "package_name": "com.e.myapplication"
+          "package_name": "com.e.saivities"
         }
       },
       "oauth_client": [
         {
-          "client_id": "48003190773-nb12abqppb323ahdua5ip82b1o78joib.apps.googleusercontent.com",
+          "client_id": "48003190773-gbtqf5v2aldmhhsa028t2o8gmvjl7tfn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.e.myapplication",
-            "certificate_hash": "5e39f2a17f464455a7289cbd7183affbfa984c1a"
-          }
-        },
-        {
-          "client_id": "48003190773-i1kvmgkbu9ahl7llb2i4cgequo8jrht0.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.e.myapplication",
+            "package_name": "com.e.saivities",
             "certificate_hash": "52fe0bf508e86ddfb01fee0f34e6c88277854273"
-          }
-        },
-        {
-          "client_id": "48003190773-hef8adjnsca9rref80p4cim3535uj1v1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.e.myapplication",
-            "certificate_hash": "481681c1e8f6034b2c243438ff3a4bd2905c3183"
           }
         },
         {

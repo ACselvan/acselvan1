@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fbf7ea"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <ImageView
         android:layout_width="300dp"
         android:layout_height="350dp"
@@ -95,19 +99,19 @@
         <Button
             android:id="@+id/business_image_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:background="@drawable/button"
+            android:background="@drawable/buttonbg"
             android:text="edit image" />
 
         <Button
             android:id="@+id/edit_business"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="25dp"
-            android:background="@drawable/button"
+            android:background="@drawable/buttonbg"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:text="edit" />
@@ -115,12 +119,13 @@
         <Button
             android:id="@+id/business_favourites"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:background="@drawable/button"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/buttonbg"
             android:text="favourites" />
     </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

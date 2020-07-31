@@ -46,6 +46,7 @@ ImageView hire,work;
     private SharedPreferences sharedPreferences;
     DatabaseReference databaseReference,databaseReference1;
     Date outputdate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,8 +66,7 @@ ImageView hire,work;
         hire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent i1=new Intent(Work_Portal.this,Employportal.class);
-                startActivity(i1);*/
+
                 query1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -117,7 +117,7 @@ ImageView hire,work;
                         {
                             user1=dataSnapshot1.getValue(user.class);
                             verify=user1.getJob_exp();
-                            //Toast.makeText(getApplicationContext(),user1.getMat_exp(),Toast.LENGTH_SHORT).show();
+
                             if (Integer.parseInt(currentDateandTime)<=Integer.parseInt(user1.job_exp))
                             {
                                 Intent i1=new Intent(Work_Portal.this,JobList.class);
@@ -265,12 +265,12 @@ ImageView hire,work;
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             // options.put("order_id", "order_9A33XWu170gUtm");
             options.put("currency", "INR");
-
+            options.put("payment_capture", true);
             /**
              * Amount is always passed in currency subunits
              * Eg: "500" = INR 5.00
              */
-            options.put("amount", "50000");
+            options.put("amount", "20000");
 
             checkout.open(activity, options);
         } catch(Exception e) {

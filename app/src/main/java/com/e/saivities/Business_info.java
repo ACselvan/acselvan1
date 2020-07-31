@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -88,6 +89,7 @@ private DatabaseReference databaseReference;
         imageedit=(Button)v1.findViewById(R.id.business_image_edit);
         recyclerView_business=(RecyclerView)findViewById(R.id.recyclerview_business);
         recyclerView_business.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView_business.addItemDecoration(new DividerItemDecoration(recyclerView_business.getContext(), DividerItemDecoration.VERTICAL));
         databaseReference= FirebaseDatabase.getInstance().getReference("Business_Details");
         query=databaseReference.orderByChild("contact_number").equalTo(phonenumber);
         list=new ArrayList<>();
@@ -152,11 +154,9 @@ private DatabaseReference databaseReference;
 
 
                     upload = dataSnapshot1.getValue(Upload.class);
-                       // if (upload.getFirmname().equals("ac")) {
-                            list.add(upload);
-                       // }
 
-               // mProgressCircle.setVisibility(View.INVISIBLE);
+                            list.add(upload);
+
             }
                 adapter=new ViewHolder(Business_info.this,list,phonenumber);
                 recyclerView_business.setAdapter(adapter);

@@ -63,7 +63,7 @@ TextView mobile;
         query=Business_details.orderByChild("contact_number").equalTo(phonenumber);
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("Categories");
         getSupportActionBar().setTitle("Business Edit");
-        businessCategoryTable.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Categories").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CategoryList.clear();//to prevent repititoin and again retrievin
@@ -105,7 +105,7 @@ TextView mobile;
 
             }
         });
-        businessCategoryTable1.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("city_business").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CategoryList1.clear();//to prevent repititoin and again retrievin

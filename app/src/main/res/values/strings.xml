@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">SaivaMani</string>
     <string name="title_activity_business">Business</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="_1_shipping_company_importer_or_exporter"><![CDATA[1) Shipping Company <--> Importer or Exporter]]></string>
+    <string name="importer_or_exporter_truck_owner"><![CDATA[Importer or Exporter <--> Truck Owner]]></string>
+    <string name="truck_owner_office_furniture"><![CDATA[Truck Owner <--> Office Furniture]]></string>
+    <string name="office_furniture_syster_software_provider"><![CDATA[Office Furniture <--> Syster/Software Provider]]></string>
+    <string name="_1_food_grains_supplier_hotel"><![CDATA[1) Food Grains Supplier <--> Hotel]]></string>
+    <string name="hotel_grocerry_store"><![CDATA[Hotel <--> Grocerry Store]]></string>
+    <string name="grocerry_store_truck_owner"><![CDATA[Grocerry Store <--> Truck Owner]]></string>
 </resources>

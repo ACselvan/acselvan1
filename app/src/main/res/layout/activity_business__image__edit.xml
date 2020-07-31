@@ -76,11 +76,11 @@
         <Button
             android:id="@+id/get_image_business_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="get image"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:background="@drawable/button"/>
+            android:background="@drawable/buttonbg"/>
 
     </LinearLayout>
     <LinearLayout
@@ -92,10 +92,10 @@
         <Button
             android:id="@+id/upload_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="Update"
             android:layout_marginTop="20dp"
-            android:background="@drawable/button"
+            android:background="@drawable/buttonbg"
             android:layout_gravity="center"/>
 
     </LinearLayout>

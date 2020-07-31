@@ -2,6 +2,7 @@ package com.e.saivities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,6 +43,7 @@ public class JobList extends AppCompatActivity {
         setContentView(R.layout.activity_job_list);
         recyclerView_job=(RecyclerView)findViewById(R.id.recycler_job);
         recyclerView_job.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView_job.addItemDecoration(new DividerItemDecoration(recyclerView_job.getContext(), DividerItemDecoration.VERTICAL));
         databaseReference= FirebaseDatabase.getInstance().getReference("Employer_Details");
         query=FirebaseDatabase.getInstance().getReference("Employer_Details");
         list=new ArrayList<>();

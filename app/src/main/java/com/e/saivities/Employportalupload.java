@@ -2,10 +2,10 @@ package com.e.saivities;
 
 class Employportalupload {
 
-    String name; String qualification; String address; String dttm; String num;String exp;String city;String phone;String id;
+    String name; String qualification; String address; String dttm; String num;String exp;String city;String phone;String id;String description;
 
 
-    public Employportalupload(String namee, String qualificationn, String addresss, String dttmm, String numm,String exp,String city,String phone,String id) {
+    public Employportalupload(String namee, String qualificationn, String addresss, String dttmm, String numm,String exp,String city,String phone,String id,String description) {
         this.name=namee;
         this.qualification=qualificationn;
         this.address=addresss;
@@ -15,6 +15,15 @@ class Employportalupload {
         this.city=city;
         this.phone=phone;
         this.id=id;
+        this.description=description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getId() {

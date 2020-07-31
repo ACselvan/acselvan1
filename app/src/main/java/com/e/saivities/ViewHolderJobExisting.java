@@ -41,6 +41,8 @@ public class ViewHolderJobExisting extends RecyclerView.Adapter<ViewHolderJobExi
         holder.date_job.setText(emp.get(position).getDttm());
         holder.number_job.setText(emp.get(position).getNum());
         holder.address_job.setText(emp.get(position).getAddress());
+        holder.phonenumber.setText(emp.get(position).getPhone());
+        holder.description.setText(emp.get(position).getDescription());
         holder.city.setText(emp.get(position).getCity());
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +74,7 @@ public class ViewHolderJobExisting extends RecyclerView.Adapter<ViewHolderJobExi
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        TextView name_job,qualification_job,date_job,number_job,address_job,city;
+        TextView name_job,qualification_job,date_job,number_job,address_job,city,phonenumber,description;
         Button delete;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -81,6 +83,8 @@ public class ViewHolderJobExisting extends RecyclerView.Adapter<ViewHolderJobExi
             date_job=(TextView)itemView.findViewById(R.id.date_job1);
             number_job=(TextView)itemView.findViewById(R.id.number_job1);
             address_job=(TextView)itemView.findViewById(R.id.address_job1);
+            phonenumber=(TextView)itemView.findViewById(R.id.phonenumber_job1);
+            description=(TextView)itemView.findViewById(R.id.description_job_item1);
             city=(TextView)itemView.findViewById(R.id.city_job_item1);
             delete=(Button)itemView.findViewById(R.id.job_existing_delete);
         }

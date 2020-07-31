@@ -2,6 +2,7 @@ package com.e.saivities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +40,7 @@ public class Job_existing extends AppCompatActivity {
         phonenumber=sharedPreferences.getString("phonenumber","");
         recyclerView_job=(RecyclerView)findViewById(R.id.recycler_jobexisting);
         recyclerView_job.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView_job.addItemDecoration(new DividerItemDecoration(recyclerView_job.getContext(), DividerItemDecoration.VERTICAL));
         query= FirebaseDatabase.getInstance().getReference("Employer_Details").orderByChild("phone").equalTo(phonenumber);
         list=new ArrayList<>();
         getSupportActionBar().setTitle("Your Ad");

@@ -45,23 +45,22 @@ import java.util.TimerTask;
 
 public class Matrimony_info extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button matrimony_favourites,editprofile,editimage;
-    private TextView name,fathername,mothername,cellno,sex,age,siblings,income,job,education,height,city,status_edit,children,noofchildren;
+    private TextView name,fathername,mothername,cellno,sex,age,siblings,income,job,education,height,city;
     private Query query,query1,query2;
     private ImageView profilimage;
-    private String imageurl;
+
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     NavigationView matrimony_navigation;
     private RecyclerView recyclerView_matrimony;
-    String usersGender,gender,phonenumber,id_user;
+    String usersGender,phonenumber;
     up1 up;
     private DatabaseReference databaseReference,databaseReference1;
     ArrayList<up1> list;
     private ViewHolderMatrimony adapter;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
-    DatabaseReference businessCategoryTable;
-    List<String> CategoryList = new ArrayList<>();
+
     private static ViewPager viewPager;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
@@ -209,7 +208,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
                     list.add(up);
                      }
 
-                    // mProgressCircle.setVisibility(View.INVISIBLE);
+
                 }
                 adapter=new ViewHolderMatrimony(Matrimony_info.this,list,phonenumber);
                 recyclerView_matrimony.setAdapter(adapter);
@@ -221,32 +220,6 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
 
             }
         });
-/*
-        query=databaseReference.orderByChild("sex").equalTo(usersGender);
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               list.clear();
-                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
-
-
-
-                    up = dataSnapshot1.getValue(up1.class);
-                    // if (upload.getFirmname().equals("ac")) {
-                    list.add(up);
-                    // }
-
-                    // mProgressCircle.setVisibility(View.INVISIBLE);
-                }
-                adapter=new ViewHolderMatrimony(Matrimony_info.this,list,phonenumber);
-                recyclerView_matrimony.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
 
     }
     private void check1()
@@ -261,9 +234,9 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
 
 
                     up = dataSnapshot1.getValue(up1.class);
-                    // if (upload.getFirmname().equals("ac")) {
+
                    usersGender=up.getSex();
-                    // }
+
                     if (up.getSex().equals("Male"))
                     {
                         usersGender="Female";
@@ -275,7 +248,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
                         check(usersGender);
                     }
 
-                    // mProgressCircle.setVisibility(View.INVISIBLE);
+
                 }
 
             }

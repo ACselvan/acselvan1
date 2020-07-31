@@ -55,16 +55,16 @@ public class NR extends AppCompatActivity  {
     Button upload;
     ImageView iv,iv1;
     Uri ImageUri,ImageUri2;
-    String user_id;
+
     private StorageReference st,stt;
     private Uri resultUri;
-    EditText Name, Age, Height, Income, education, Job, Fn, Mn, sbl, t10,company,noofchildren;
+    EditText Name, Age, Height, Income, education, Job, Fn, Mn, sbl,company;
     Button button4, uploadimage, uploadHoroscope;
     DatabaseReference Matrimony_details;
     RadioGroup radioGroup;
     RadioButton GenderButton;
     int i;
-    String Namee, Agee, Sexx, Heightt, Incomee, educationn, Jobb, Fnn, Mnn, sbll, t100,companyy,HoroscopeImage=null,profileImage=null,phonenumber,city="";
+    String Namee, Agee, Sexx, Heightt, Incomee, educationn, Jobb, Fnn, Mnn, sbll,companyy,HoroscopeImage=null,profileImage=null,phonenumber,city="";
     DatabaseReference businessCategoryTable;
     List<String> CategoryList = new ArrayList<>();
 
@@ -103,7 +103,7 @@ public class NR extends AppCompatActivity  {
         stt = FirebaseStorage.getInstance().getReference("Uploads/profilephoto");
 
         st = FirebaseStorage.getInstance().getReference("Uploads/Horoscope");
-      //  db= FirebaseDatabase.getInstance().getReference("Uploads/");
+
 
         uploadimage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +128,7 @@ public class NR extends AppCompatActivity  {
 
         });
 
-        businessCategoryTable.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("city_business").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CategoryList.clear();//to prevent repititoin and again retrievin
@@ -183,7 +183,7 @@ public class NR extends AppCompatActivity  {
                         if((HoroscopeImage!=null)&&!Namee.equals("")&&!Sexx.equals("")&&!Heightt.equals("")&&!Incomee.equals("")&&!educationn.equals("")&&!Jobb.equals("")&&!Mnn.equals("")&&!Fnn.equals("")&&!sbll.equals("")&&!companyy.equals("")&&!Agee.equals("")&&!city.equals("")) {
 
                             String idd = Matrimony_details.push().getKey();
-                            //  String imageurl = uri.toString();
+
 
                             up1 Image = new up1(Namee, Agee, Sexx, Heightt, Incomee, educationn, Jobb, educationn, Mnn, Fnn, sbll, phonenumber, companyy, HoroscopeImage, profileImage, Matrimony_details,city);
                             Matrimony_details.child(idd).setValue(Image);
@@ -251,7 +251,7 @@ public class NR extends AppCompatActivity  {
                                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
-                                            // Log.d(TAG, "onSuccess: uri= "+ uri.toString());
+
                                             Handler handler =new Handler();
                                             handler.postDelayed(new Runnable() {
                                                 @Override
@@ -294,7 +294,7 @@ public class NR extends AppCompatActivity  {
                 ImageUri2 = data.getData();
                 CropImage.activity(ImageUri2)
                         .setGuidelines(CropImageView.Guidelines.ON)
-                        .setAspectRatio(1,1)
+                        .setAspectRatio(1,2)
                         .start(this);
 
 
@@ -305,7 +305,7 @@ public class NR extends AppCompatActivity  {
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);
                 if (resultCode == RESULT_OK) {
                     resultUri = result.getUri();
-                    Toast.makeText(getApplicationContext(),"succcess",Toast.LENGTH_SHORT).show();
+
                     Picasso.with(this).load(resultUri).into(iv1);
                     iv1.setImageURI(resultUri);
                     if(resultUri != null) {
@@ -319,7 +319,7 @@ public class NR extends AppCompatActivity  {
                                         fileReference2.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                             @Override
                                             public void onSuccess(Uri uri) {
-                                                // Log.d(TAG, "onSuccess: uri= "+ uri.toString());
+
                                                 Handler handlerr =new Handler();
                                                 handlerr.postDelayed(new Runnable() {
                                                     @Override
@@ -357,66 +357,13 @@ public class NR extends AppCompatActivity  {
                     }
                 } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                         Exception error = result.getError();
+                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
                     }
             }
 
 
         }
-   /* if(i!=0) {
-        if (requestCode == PICK_IMAGE_REQUESTT && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            ImageUri2 = data.getData();
-            Picasso.with(this).load(ImageUri2).into(iv1);
-            iv1.setImageURI(ImageUri2);
 
-
-            if(ImageUri2 != null) {
-                final StorageReference fileReference2 = stt.child(System.currentTimeMillis() + "." + getFileExtension2(ImageUri2));
-
-                fileReference2.putFile(ImageUri2)
-
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                fileReference2.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        // Log.d(TAG, "onSuccess: uri= "+ uri.toString());
-                                        Handler handlerr =new Handler();
-                                        handlerr.postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                pb1.setProgress(0);
-                                                Toast.makeText(NR.this,"profilephoto Uploaded Succesfully",Toast.LENGTH_SHORT).show();
-
-                                            }
-                                        },500);
-                                        profileImage = uri.toString();
-
-
-                                    }
-                                });
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(NR.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                            }
-                        }) .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        double progresss = (100.0 * taskSnapshot.getBytesTransferred() /taskSnapshot.getTotalByteCount());
-                        pb1.setProgress((int)progresss);
-                    }
-                });
-
-
-
-
-
-            }
-    }}*/
 }
     private  String getFileExtension2(Uri uri)
     {

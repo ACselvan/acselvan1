@@ -38,6 +38,8 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +50,7 @@ public class Getting_Business_details extends AppCompatActivity {
    TextView r3,r5;
     EditText t7,t8,t9,t10,r4,r6,city_business;
     Button b2;
-    Uri ImageUri;
+    Uri ImageUri,ImageUri2,resultUri;
     String imageurl="",city="",phonenumber;
     String Firmname,Address,Timing,Contact_number,category,Description,Proprietor_name;
     DatabaseReference Business_details;
@@ -73,7 +75,7 @@ public class Getting_Business_details extends AppCompatActivity {
         get_image=(Button)findViewById(R.id.get_image_business);
         spinner=findViewById(R.id.spinner_business);
         t8=findViewById(R.id.t8);
-        //t9=findViewById(R.id.t9);
+
         t10=findViewById(R.id.t10);
         b2=findViewById(R.id.b2);
         r3=findViewById(R.id.r3);
@@ -87,7 +89,7 @@ public class Getting_Business_details extends AppCompatActivity {
         Business_details= FirebaseDatabase.getInstance().getReference("Business_Details");
         businessCategoryTable= FirebaseDatabase.getInstance().getReference("Categories");
         st = FirebaseStorage.getInstance().getReference("Uploads/business");
-        businessCategoryTable.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Categories").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CategoryList.clear();//to prevent repititoin and again retrievin
@@ -108,7 +110,7 @@ public class Getting_Business_details extends AppCompatActivity {
 
             }
         });
-        businessCategoryTable1.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("city_business").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CategoryList1.clear();//to prevent repititoin and again retrievin
@@ -141,12 +143,12 @@ public class Getting_Business_details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                category= s.getSelectedItem().toString();
-              //  Contact_number=t7.getText().toString().trim();
+
                 Contact_number=phonenumber;
                         Proprietor_name=t8.getText().toString().trim();
                         Address=r6.getText().toString().trim();
                         Description=r4.getText().toString().trim();
-          //  Timing=t9.getText().toString().trim();
+
                         Firmname=t10.getText().toString().trim();
             city=spinner.getSelectedItem().toString();
 
@@ -154,7 +156,7 @@ public class Getting_Business_details extends AppCompatActivity {
 
 
                 String id = Business_details.push().getKey();
-                // Upload upload=new Upload(Firmname,Address,Contact_number,category,Description,Proprietor_name);
+
                 Upload upload = new Upload(Address, Contact_number, category, Firmname, Description, Proprietor_name, imageurl, city);
                 Business_details.child(id).setValue(upload);
                 city="";
@@ -192,17 +194,28 @@ else {
     protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            ImageUri2 = data.getData();
+            CropImage.activity(ImageUri2)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(1,2)
+                    .start(this);
 
-            if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-                ImageUri = data.getData();
-                Picasso.with(this).load(ImageUri).into(image_business);
-                image_business.setImageURI(ImageUri);
 
 
-                if(ImageUri != null) {
-                    final StorageReference fileReference = st.child(System.currentTimeMillis() + "." + getFileExtension(ImageUri));
 
-                    fileReference.putFile(ImageUri)
+        }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                resultUri = result.getUri();
+
+                Picasso.with(this).load(resultUri).into(image_business);
+                image_business.setImageURI(resultUri);
+                if(resultUri != null) {
+                    final StorageReference fileReference = st.child(System.currentTimeMillis() + "." + getFileExtension(resultUri));
+
+                    fileReference.putFile(resultUri)
 
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -210,18 +223,18 @@ else {
                                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
-                                            // Log.d(TAG, "onSuccess: uri= "+ uri.toString());
-                                            Handler handler =new Handler();
-                                            handler.postDelayed(new Runnable() {
+
+                                            Handler handlerr =new Handler();
+                                            handlerr.postDelayed(new Runnable() {
                                                 @Override
                                                 public void run() {
                                                     image_progress.setProgress(0);
-                                                    //Toast.makeText(Getting_Business_details.this,"Horoscope Uploaded Succesfully",Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(Getting_Business_details.this,"Photo Uploaded Succesfully",Toast.LENGTH_SHORT).show();
 
                                                 }
                                             },500);
                                             imageurl = uri.toString();
-                                           // Toast.makeText(Getting_Business_details.this,uri.toString(),Toast.LENGTH_SHORT).show();
+
 
                                         }
                                     });
@@ -236,19 +249,20 @@ else {
                             }) .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred() /taskSnapshot.getTotalByteCount());
-                            image_progress.setProgress((int)progress);
+                            double progresss = (100.0 * taskSnapshot.getBytesTransferred() /taskSnapshot.getTotalByteCount());
+                            image_progress.setProgress((int)progresss);
                         }
                     });
 
+
+
+
+
                 }
-
-
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
             }
-
-
-
-
+        }
 
     }
     private  String getFileExtension(Uri uri)

@@ -24,32 +24,18 @@
           android:layout_marginTop="50dp"
 
             >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView
 
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
 
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/exclamatory" />
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Important Note"
+                    android:layout_gravity="center"
                     android:textColor="#000000" />
-                <ImageView
 
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
 
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/exclamatory" />
-            </LinearLayout>
             <TextView
                 android:padding="10dp"
                 android:layout_marginTop="10dp"
@@ -59,7 +45,7 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 android:textColor="#000000"
-                android:text="The Phone Number Your going to give will be your default contact number this can't be changed" />
+                android:text="Please use your mobile number as your authentication," />
 
     </LinearLayout>
 
@@ -86,10 +72,10 @@
             android:layout_width="220dp"
             android:layout_marginTop="20dp"
 
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:text="log in"
-            android:background="@drawable/button"/>
+            android:background="@drawable/buttonbg"/>
 
 
 

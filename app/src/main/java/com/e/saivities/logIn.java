@@ -33,19 +33,18 @@ import java.util.concurrent.TimeUnit;
 
 public class logIn extends AppCompatActivity {
 EditText number_auth;
-Button login_auth,resend_auth,sign_up_auth;
+Button login_auth;
     private String verificationId;
-    private Button verify;
+
     String phonenumber;
     private DatabaseReference mDatabase;
-    private Query query;
-    user user1;
-    String a="";
+
+
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-    FirebaseDatabase firebaseDatabase;
+
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +55,8 @@ Button login_auth,resend_auth,sign_up_auth;
         editor=sharedPreferences.edit();
         number_auth=(EditText)findViewById(R.id.number_edit);
         login_auth=(Button)findViewById(R.id.login_auth);
-       query=FirebaseDatabase.getInstance().getReference("user");
-       // resend_auth=(Button)findViewById(R.id.resend_auth);
+
+
 
         login_auth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,14 +113,7 @@ Button login_auth,resend_auth,sign_up_auth;
             }
         });
 
-        /*resend_auth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                finish();
-                Toast.makeText(getApplicationContext(),"log out",Toast.LENGTH_SHORT).show();
-            }
-        });*/
+
         
     }
 
@@ -139,35 +131,13 @@ Button login_auth,resend_auth,sign_up_auth;
                     public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful())
                             {
-                              /*  query.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
-                                        {
-                                            user1=dataSnapshot1.getValue(user.class);
-                                            if (user1.getMobile().equals(phonenumber))
-                                            {
-                                                Toast.makeText(logIn.this,"existing user",Toast.LENGTH_SHORT).show();
-                                            }
-                                            else
-                                            {
-                                                Toast.makeText(logIn.this,"new user",Toast.LENGTH_SHORT).show();
-                                            }
 
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });*/
                                 FirebaseDatabase.getInstance().getReference("user").orderByChild("mobile").equalTo(phonenumber).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.getChildrenCount() == 0)
                                         {
-                                            Toast.makeText(getApplicationContext(),"new user",Toast.LENGTH_SHORT).show();
+
                                             AlertDialog.Builder mBuilder =new AlertDialog.Builder(logIn.this);
                                             mBuilder.setCancelable(false);
                                             View mView=getLayoutInflater().inflate(R.layout.layout_name_newuser,null);
@@ -198,7 +168,7 @@ Button login_auth,resend_auth,sign_up_auth;
                                         {
                                             editor.putString("phonenumber",phonenumber);
                                             editor.commit();
-                                            Toast.makeText(getApplicationContext(),"existing user",Toast.LENGTH_SHORT).show();
+
                                             Intent i1=new Intent(logIn.this,Main2Activity.class);
                                             startActivity(i1);
                                         }
@@ -210,8 +180,6 @@ Button login_auth,resend_auth,sign_up_auth;
                                     }
                                 });
 
-                                 /*Intent i1=new Intent(logIn.this,Main2Activity.class);
-                                    startActivity(i1);*/
                             }
                             else
                             {
@@ -260,6 +228,7 @@ Button login_auth,resend_auth,sign_up_auth;
 
             Intent i1=new Intent(this,Main2Activity.class);
             startActivity(i1);
+            finish();
         }
     }
 }

@@ -1,12 +1,12 @@
 package com.e.saivities;
 
 public class Employer_Details {
-    private String address,dttm,name,num,qualification,exp,city,phone,id;
+    private String address,dttm,name,num,qualification,exp,city,phone,id,description;
     public Employer_Details() {
     }
 
 
-    public Employer_Details(String address, String dttm, String name, String num, String qualification,String exp,String city,String phone,String id) {
+    public Employer_Details(String address, String dttm, String name, String num, String qualification,String exp,String city,String phone,String id,String description) {
         this.address = address;
         this.dttm = dttm;
         this.name = name;
@@ -16,6 +16,17 @@ public class Employer_Details {
         this.city=city;
         this.phone=phone;
         this.id=id;
+        this.description=description;
+    }
+
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getId() {

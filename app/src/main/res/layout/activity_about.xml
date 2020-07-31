@@ -6,10 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/aboutimage"
+    android:paddingTop="50dp"
+    android:paddingBottom="50dp"
+    android:paddingLeft="60dp"
+    android:paddingRight="60dp"
     tools:context=".About">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:scrollbars="vertical">
 <LinearLayout
     android:layout_width="match_parent"
@@ -23,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Information You Should Know about our app"
+        android:text="About Us"
         android:textColor="#0000FF"
         android:textSize="25sp"
         android:gravity="center_horizontal"
@@ -34,7 +40,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="  the credentials of the details provided by the yourself have to be verified only by fellow connects .The app developer or manager doesn't provide any validity to due above aspects "
+        android:text="  This is a online based application so mobila data is mandatory "
+        android:textColor="#000000"
+        android:textSize="25sp"
+        />
+    <TextView
+        android:textAlignment="center"
+        android:justificationMode="inter_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="  We at SaivaMani involved in app enabled services in providing Business Connection, Matrimony Services and Job Notice would like to notify that we are only a connecting platform and not a validator of any of the services"
         android:textColor="#000000"
         android:textSize="25sp"
          />
@@ -44,7 +60,206 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:justificationMode="inter_word"
-        android:text="  The job portal is also only a connecting means and does not suppport or involve in aspects of handing over any certificates nor providing providing for a job cash in process of getting selected for a job"
+        android:text="  Please check the validity at your own risk and we do not suggest you to pay or redeem for any job services, for which we will not hold responsible"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:justificationMode="inter_word"
+        android:text="  The update of app may hold Business Catalogue advertisements amoung relevant circles and chat option amoung them "
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:justificationMode="inter_word"
+        android:text="  For Example:"
+        android:textColor="#0000FF"
+        android:textSize="25sp"
+        android:gravity="start"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:text="@string/_1_shipping_company_importer_or_exporter"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="start"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:text="@string/importer_or_exporter_truck_owner"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="start"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:text="@string/truck_owner_office_furniture"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="start"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:text="@string/office_furniture_syster_software_provider"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="start"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:text="@string/_1_food_grains_supplier_hotel"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="start"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:text="@string/hotel_grocerry_store"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="start"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:text="@string/grocerry_store_truck_owner"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="start"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:justificationMode="inter_word"
+        android:text="  Suggestions and regarding the services are always welcome"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:justificationMode="inter_word"
+        android:text="Contact"
+        android:textColor="#0000FF"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:justificationMode="inter_word"
+        android:text="mr.Chokalingam"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:justificationMode="inter_word"
+        android:text="+91 860806589"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:justificationMode="inter_word"
+        android:text="And"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:justificationMode="inter_word"
+        android:text="mr.Lakshmanan"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:justificationMode="inter_word"
+        android:text="+91 9865585491"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:justificationMode="inter_word"
+        android:text="Note"
+        android:textColor="#FF0000"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:justificationMode="inter_word"
+        android:text="Incase of payment failure please send us your mail id, service required, mobile number to 8608086589"
         android:textColor="#000000"
         android:textSize="25sp"
         android:gravity="center_horizontal"

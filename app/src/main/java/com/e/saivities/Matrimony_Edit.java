@@ -32,8 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Matrimony_Edit extends AppCompatActivity {
-private EditText name,age,height,comapny,income,education,job,fathername,mothername,siblings,noofchildren;
-private     TextView cellno,sex,status,children;
+private EditText name,age,height,comapny,income,education,job,fathername,mothername,siblings;
+private     TextView cellno,sex;
    private RadioGroup radioGroup;
     private RadioButton radioButton;
     Button submit;
@@ -41,12 +41,12 @@ private     TextView cellno,sex,status,children;
     DatabaseReference Business_details;
     Query query;
     private up1 up;
-    List<String> names = new ArrayList<>();
+
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
     DatabaseReference businessCategoryTable;
     List<String> CategoryList = new ArrayList<>();
-    private Spinner spinner,status_edit;
+    private Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +100,7 @@ private     TextView cellno,sex,status,children;
 
             }
         });
-        businessCategoryTable.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("city_business").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CategoryList.clear();//to prevent repititoin and again retrievin
